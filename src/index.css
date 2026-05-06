@@ -732,9 +732,34 @@
   gap: 1rem;
   margin-bottom: 2rem;
 }
+.problem-cards .problem-card:last-child:nth-child(3n - 2),
+.problem-cards .problem-card:last-child:nth-child(3n - 1) {
+  grid-column: auto;
+}
+.problem-cards .problem-card:nth-child(4) {
+  grid-column: 1;
+}
+.problem-cards .problem-card:nth-child(5) {
+  grid-column: 2;
+}
 @media (max-width: 900px) {
   .problem-cards {
     grid-template-columns: 1fr 1fr;
+  }
+  .problem-cards .problem-card:nth-child(4),
+  .problem-cards .problem-card:nth-child(5) {
+    grid-column: auto;
+  }
+  .problem-cards .problem-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 600px) {
+  .problem-cards {
+    grid-template-columns: 1fr;
+  }
+  .problem-cards .problem-card:nth-child(n) {
+    grid-column: auto;
   }
 }
 .problem-card {
