@@ -38,8 +38,11 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
                   </div>
                 ))}
               </div>
-              <div className="problem-danger">
-                <strong>И самое опасное:</strong> в этот момент ваш клиент покупает продукт конкурента.
+              <div className="problem-danger problem-danger--highlight">
+                <div className="problem-danger-icon">⚠️</div>
+                <div>
+                  <strong>И самое опасное:</strong> в этот момент ваш клиент покупает продукт конкурента.
+                </div>
               </div>
             </div>
 
@@ -100,7 +103,7 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
             {[
               { icon: "Zap", title: "Масштабирование без потолка", desc: "Высокоскоростная линия 60 000 банок/час — закрывает пиковый спрос без overtime и штрафов" },
               { icon: "Tag", title: "Прозрачная себестоимость", desc: "Собственное производство фиксирует цену банки и сырья — маржа под вашим контролем" },
-              { icon: "Truck", title: "Единый центр отгрузки", desc: "Производство + хранение + поставки в одной системе — никаких разрозненных складов" },
+              { icon: "Truck", title: "Единый центр отгрузки в сети", desc: "Производство + хранение + поставки в одной системе — никаких разрозненных складов" },
               { icon: "DollarSign", title: "Дополнительная прибыль", desc: "Свободные мощности — контрактный розлив и ответственное хранение для других брендов" },
               { icon: "Shuffle", title: "Гибкость по SKU", desc: "Быстрый переналад позволяет запускать новые вкусы без зависимости от подрядчиков" },
               { icon: "ShieldCheck", title: "Защита от санкций", desc: "Локальный сервис, доступные компоненты, независимость от импортных поставщиков" },
