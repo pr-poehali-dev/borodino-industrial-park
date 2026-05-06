@@ -43,10 +43,7 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
             </div>
           </div>
 
-          <div className="problem-conclusion">
-            Рынок больше не про «сделать хороший напиток».<br />
-            <strong>Рынок — про способность быстро масштабироваться.</strong>
-          </div>
+
         </div>
       </section>
 
@@ -68,7 +65,7 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
             </div>
             <div className="solution-side positive">
               <div className="solution-side-label">С собственным заводом</div>
-              <div className="solution-side-text solution-side-text--hero">
+              <div className="solution-side-text">
                 Вы управляете экономикой бренда.<br />Себестоимость прозрачна и предсказуема.<br />Масштаб — ваше решение.
               </div>
             </div>
