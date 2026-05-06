@@ -59,6 +59,7 @@ export default function HeroSection({ scrollTo }: HeroSectionProps) {
       <section id="overview" className="hero-section">
         <div className="hero-bg" style={{ backgroundImage: `url(${HERO_IMAGE})` }} />
         <div className="hero-overlay" />
+        <div className="hero-glow" />
         <div className="hero-grid-lines" />
         <div className="hero-content">
           <div className="hero-badge">Индустриальный парк «Бородино» · г. Вязьма</div>
