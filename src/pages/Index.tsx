@@ -345,7 +345,7 @@ export default function Index() {
               <div>
                 <div className="flagship-title">Безалкогольные напитки в алюминиевой банке</div>
                 <div className="flagship-desc">
-                  Производственная линия мощностью <strong>60 000 банок в час</strong>. Полный цикл: розлив, укупорка, этикетировка, упаковка. Инвестор — компания <strong>Бренд Билдинг Групп</strong>.
+                  Производственная линия мощностью <strong>60 000 банок в час</strong>. Полный цикл: розлив, укупорка, этикетировка, упаковка.
                 </div>
                 <div className="flagship-tags">
                   <span className="tag">60 000 банок/час</span>
@@ -360,14 +360,14 @@ export default function Index() {
           {/* Страсти */}
           <div className="passions-block">
             <div className="passions-label">Главные страсти резидентов</div>
-            <div className="passions-subtitle">Драйверы и амбиции beverage-компаний</div>
+            <div className="passions-subtitle">Какого инвестора мы хотим?</div>
             <div className="passions-grid">
               {[
                 {
                   num: "01",
                   emoji: "🏆",
                   title: "Стать новым локальным лидером",
-                  desc: "После ослабления международных брендов открылось окно возможностей. Это сильнейшая мотивация рынка — занять освободившееся место.",
+                  desc: "После ослабления международных брендов открылось окно возможностей.",
                 },
                 {
                   num: "02",
