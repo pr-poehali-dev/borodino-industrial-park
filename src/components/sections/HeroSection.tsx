@@ -62,13 +62,14 @@ export default function HeroSection({ scrollTo }: HeroSectionProps) {
         <div className="hero-glow" />
 
         <div className="hero-content">
-          <div className="hero-eyebrow">Инвестиционный проект</div>
+          <div className="hero-eyebrow">Индустриальный парк «Бородино» · г. Вязьма</div>
           <h1 className="hero-headline">
-            Индустриальный<br />парк
-            <span className="hero-headline-accent"> «Бородино»</span>
+            Пока другие ждут свободные окна<br />
+            на контрактных площадках —<br />
+            <span className="hero-headline-accent">вы закрываете спрос<br />и забираете рынок.</span>
           </h1>
           <p className="hero-tagline">
-            г. Вязьма · трасса М1 · 7 Га · запуск 2026
+            Строительство индустриальной площадки 7 Га с готовой инфраструктурой для размещения производств напитков и складских мощностей · трасса М1
           </p>
           <div className="hero-actions">
             <button className="btn-primary" onClick={() => scrollTo("investment")}>
