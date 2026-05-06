@@ -10,12 +10,11 @@ function useCounter(target: number, duration = 2000, start = false) {
   useEffect(() => {
     if (!start) return;
     let startTime: number | null = null;
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
+    const step = (ts: number) => {
+      if (!startTime) startTime = ts;
+      const p = Math.min((ts - startTime) / duration, 1);
+      setCount(Math.floor((1 - Math.pow(1 - p, 3)) * target));
+      if (p < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
   }, [start, target, duration]);
@@ -26,12 +25,12 @@ function useInView(threshold = 0.2) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setInView(true); },
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setInView(true); },
       { threshold }
     );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
   }, [threshold]);
   return { ref, inView };
 }
@@ -50,24 +49,12 @@ function StatCard({ value, suffix, label, delay = 0, start }: {
 
 const navItems = [
   { id: "overview", label: "Обзор" },
-  { id: "geography", label: "География" },
-  { id: "infrastructure", label: "Инфраструктура" },
-  { id: "production", label: "Производство" },
-  { id: "market-pains", label: "Боли рынка" },
+  { id: "problem", label: "Проблема" },
+  { id: "solution", label: "Решение" },
+  { id: "project", label: "Проект" },
   { id: "investment", label: "Инвестиции" },
   { id: "advantages", label: "Преимущества" },
   { id: "contacts", label: "Контакты" },
-];
-
-
-
-const advantages = [
-  { icon: "Zap", title: "Собственное производство", desc: "Прозрачное и стабильное ценообразование за счёт полного контроля над производственным процессом" },
-  { icon: "BarChart2", title: "Управление объёмами", desc: "Гибкое управление объёмами выпуска безалкогольных напитков в алюминиевой банке под нужды бизнеса" },
-  { icon: "TrendingDown", title: "Оптимизация себестоимости", desc: "Снижение затрат на производство и логистику за счёт вертикальной интеграции" },
-  { icon: "Truck", title: "Единый центр отгрузки", desc: "Централизованная отгрузка напитков в сети — ускорение сроков и снижение транспортных расходов" },
-  { icon: "DollarSign", title: "Контрактное производство", desc: "Дополнительный доход от производства по заказу сторонних брендов и ответственного хранения" },
-  { icon: "MapPin", title: "Стратегическое расположение", desc: "Трасса М1, г. Вязьма — узловая точка между Москвой и западными регионами России" },
 ];
 
 export default function Index() {
@@ -94,7 +81,8 @@ export default function Index() {
 
   return (
     <div className="app-root">
-      {/* NAV */}
+
+      {/* ── NAV ─────────────────────────────────── */}
       <nav className="navbar">
         <div className="navbar-inner">
           <div className="navbar-logo">
@@ -103,18 +91,12 @@ export default function Index() {
           </div>
           <div className="navbar-links">
             {navItems.map((item) => (
-              <button
-                key={item.id}
+              <button key={item.id}
                 className={`nav-link ${activeSection === item.id ? "active" : ""}`}
-                onClick={() => scrollTo(item.id)}
-              >
-                {item.label}
-              </button>
+                onClick={() => scrollTo(item.id)}>{item.label}</button>
             ))}
           </div>
-          <button className="navbar-cta" onClick={() => scrollTo("contacts")}>
-            Связаться
-          </button>
+          <button className="navbar-cta" onClick={() => scrollTo("contacts")}>Связаться</button>
           <button className="burger" onClick={() => setMenuOpen(!menuOpen)}>
             <Icon name={menuOpen ? "X" : "Menu"} size={22} />
           </button>
@@ -122,179 +104,184 @@ export default function Index() {
         {menuOpen && (
           <div className="mobile-menu">
             {navItems.map((item) => (
-              <button key={item.id} className="mobile-link" onClick={() => scrollTo(item.id)}>
-                {item.label}
-              </button>
+              <button key={item.id} className="mobile-link" onClick={() => scrollTo(item.id)}>{item.label}</button>
             ))}
           </div>
         )}
       </nav>
 
-      {/* HERO */}
+      {/* ── 1. HERO — КРЮЧОК ────────────────────── */}
       <section id="overview" className="hero-section">
         <div className="hero-bg" style={{ backgroundImage: `url(${HERO_IMAGE})` }} />
         <div className="hero-overlay" />
         <div className="hero-grid-lines" />
         <div className="hero-content">
-          <div className="hero-badge">Индустриальный парк «Бородино»</div>
+          <div className="hero-badge">Индустриальный парк «Бородино» · г. Вязьма</div>
           <h1 className="hero-title">
-            Пока другие ждут свободные окна на контрактных площадках —
-            <br />
+            Пока другие ждут свободные окна<br />
+            на контрактных площадках —
             <span className="hero-accent">вы закрываете спрос и забираете рынок.</span>
           </h1>
           <p className="hero-subtitle">
-            Строительство индустриальной площадки на 7 Га с готовой инфраструктурой<br />
-            для размещения производств и складских мощностей · г. Вязьма, трасса М1
+            Строительство индустриальной площадки 7 Га с готовой инфраструктурой
+            для размещения производств напитков и складских мощностей · трасса М1
           </p>
           <div className="hero-actions">
             <button className="btn-primary" onClick={() => scrollTo("investment")}>
-              Условия инвестирования
-              <Icon name="ArrowRight" size={18} />
+              Условия инвестирования <Icon name="ArrowRight" size={18} />
             </button>
-            <button className="btn-outline" onClick={() => scrollTo("geography")}>
-              О проекте
+            <button className="btn-outline" onClick={() => scrollTo("problem")}>
+              Узнать подробнее
             </button>
           </div>
         </div>
-        <div className="scroll-indicator" onClick={() => scrollTo("geography")}>
+        <div className="scroll-indicator" onClick={() => scrollTo("problem")}>
           <Icon name="ChevronDown" size={24} />
         </div>
       </section>
 
-      {/* BLOCK 3 — CONTROL */}
-      <section className="content-section control-section">
+      {/* ── STATS ───────────────────────────────── */}
+      <section className="stats-section" ref={statsRef}>
+        <div className="stats-grid">
+          <StatCard value={7} suffix=" Га" label="Площадь площадки" delay={0} start={statsInView} />
+          <StatCard value={3} suffix=" млрд ₽" label="Объём инвестиций" delay={150} start={statsInView} />
+          <StatCard value={250} suffix="+" label="Рабочих мест" delay={300} start={statsInView} />
+          <StatCard value={60} suffix=" тыс/ч" label="Банок — мощность линии" delay={450} start={statsInView} />
+        </div>
+      </section>
+
+      {/* ── 2. ПРОБЛЕМА ─────────────────────────── */}
+      <section id="problem" className="content-section dark-section">
         <div className="section-inner">
-          <div className="control-split">
-            <div className="control-left">
-              <div className="control-contrast">
-                <div className="control-contrast-item negative">
-                  <div className="control-contrast-label">Без контроля</div>
-                  <div className="control-contrast-text">
-                    Когда у вас нет контроля над производством —<br />
-                    <strong>вашу прибыль определяет рынок.</strong>
-                  </div>
-                </div>
-                <div className="control-contrast-divider">vs</div>
-                <div className="control-contrast-item positive">
-                  <div className="control-contrast-label">С собственной инфраструктурой</div>
-                  <div className="control-contrast-text">
-                    Когда у вас есть собственная инфраструктура —<br />
-                    <strong>вы сами управляете экономикой бренда.</strong>
-                  </div>
-                </div>
-              </div>
+          <div className="section-label light">Проблема рынка</div>
+          <h2 className="section-title light">
+            Каждый сезон бренды теряют миллионы —<br />
+            <span style={{ color: "var(--c-gold)" }}>не потому что нет спроса</span>
+          </h2>
 
-              <div className="control-problem">
-                <div className="control-problem-title">Главная проблема рынка сегодня</div>
-                <p className="control-problem-text">
-                  Одна из главных проблем рынка напитков — непредсказуемая себестоимость.
-                </p>
-                <div className="control-factors">
-                  {[
-                    "Цена банки растёт",
-                    "Стоимость сырья меняется каждый месяц",
-                    "Логистика дорожает",
-                    "Подрядчики пересматривают условия прямо в сезон",
-                  ].map((f, i) => (
-                    <div className="control-factor" key={i}>
-                      <span className="control-factor-dot" />
-                      {f}
-                    </div>
-                  ))}
-                </div>
-                <div className="control-result">
-                  <span className="control-result-label">В итоге бренд не контролирует собственную экономику:</span>
-                  <ul className="control-result-list">
-                    <li>невозможно точно планировать маржу</li>
-                    <li>сложно прогнозировать прибыль</li>
-                    <li>сети давят на цену</li>
-                    <li>любая ошибка в закупке съедает доходность</li>
-                  </ul>
-                </div>
-                <div className="control-danger">
-                  Когда бренд растёт — хаос в себестоимости растёт вместе с ним.
-                </div>
-              </div>
-            </div>
-
-            <div className="control-right">
-              <div className="control-solution-title">
-                Производители нового поколения инвестируют в собственные мощности. Что это даёт:
-              </div>
-              <div className="control-benefits">
+          <div className="problem-layout">
+            <div className="problem-main">
+              <p className="problem-lead">
+                С апреля по сентябрь рынок перегревается: energy drinks, cold drinks, функциональные напитки показывают пиковый рост, а старые производственные линии перестают справляться.
+              </p>
+              <div className="problem-list">
                 {[
-                  { icon: "Tag", text: "Прозрачное ценообразование на банку и сырьё" },
-                  { icon: "LineChart", text: "Прогнозируемую себестоимость" },
-                  { icon: "Handshake", text: "Стабильные контракты с поставщиками" },
-                  { icon: "TrendingDown", text: "Снижение зависимости от рыночных скачков" },
-                  { icon: "BarChart2", text: "Контроль маржи на каждом SKU" },
-                  { icon: "Lock", text: "Возможность фиксировать цену на большие объёмы" },
-                  { icon: "ShieldCheck", text: "Защиту бизнеса в высокий сезон" },
-                ].map((b, i) => (
-                  <div className="control-benefit" key={i}>
-                    <div className="control-benefit-icon">
-                      <Icon name={b.icon as IconName} size={18} />
+                  { icon: "Clock", text: "Производство уходит в overtime" },
+                  { icon: "AlertCircle", text: "Срываются поставки в сети" },
+                  { icon: "Ban", text: "Сети вводят штрафы за недопоставку" },
+                  { icon: "ShoppingCart", text: "Бренд теряет полку в пиковый сезон" },
+                  { icon: "PackageX", text: "SKU исчезают в самый прибыльный период" },
+                ].map((item, i) => (
+                  <div className="problem-item" key={i}>
+                    <div className="problem-item-icon">
+                      <Icon name={item.icon as IconName} size={16} />
                     </div>
-                    <span>{b.text}</span>
+                    <span>{item.text}</span>
                   </div>
                 ))}
               </div>
+              <div className="problem-danger">
+                <strong>И самое опасное:</strong> в этот момент ваш клиент покупает продукт конкурента.
+              </div>
             </div>
+
+            <div className="problem-cost">
+              <div className="problem-cost-title">Непредсказуемая себестоимость</div>
+              <p className="problem-cost-text">
+                Вторая системная боль — отсутствие контроля над экономикой бренда.
+              </p>
+              {[
+                "Цена банки растёт",
+                "Сырьё дорожает каждый месяц",
+                "Логистика дорожает",
+                "Подрядчики меняют условия в сезон",
+              ].map((t, i) => (
+                <div className="problem-cost-item" key={i}>
+                  <span className="problem-cost-dot" />
+                  {t}
+                </div>
+              ))}
+              <div className="problem-cost-result">
+                Когда бренд растёт — хаос в себестоимости растёт вместе с ним.
+              </div>
+            </div>
+          </div>
+
+          <div className="problem-conclusion">
+            Рынок больше не про «сделать хороший напиток».<br />
+            <strong>Рынок — про способность быстро масштабироваться.</strong>
           </div>
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="stats-section" ref={statsRef}>
-        <div className="stats-grid">
-          <StatCard value={7} suffix=" Га" label="Площадь индустриальной площадки" delay={0} start={statsInView} />
-          <StatCard value={3} suffix=" млрд ₽" label="Объём инвестиций" delay={150} start={statsInView} />
-          <StatCard value={250} suffix="+" label="Создаваемых рабочих мест" delay={300} start={statsInView} />
-          <StatCard value={60} suffix=" тыс." label="Банок в час (мощность линии)" delay={450} start={statsInView} />
+      {/* ── 3. РЕШЕНИЕ ──────────────────────────── */}
+      <section id="solution" className="content-section">
+        <div className="section-inner">
+          <div className="section-label">Решение</div>
+          <h2 className="section-title">Собственная инфраструктура — стратегический актив</h2>
+
+          <div className="solution-contrast">
+            <div className="solution-side negative">
+              <div className="solution-side-label">Без контроля</div>
+              <div className="solution-side-text">
+                Вашу прибыль определяет рынок.<br />Себестоимость непредсказуема.<br />Рост ограничен чужими мощностями.
+              </div>
+            </div>
+            <div className="solution-arrow">
+              <Icon name="ArrowRight" size={28} />
+            </div>
+            <div className="solution-side positive">
+              <div className="solution-side-label">С собственным заводом</div>
+              <div className="solution-side-text">
+                Вы управляете экономикой бренда.<br />Себестоимость прозрачна и предсказуема.<br />Масштаб — ваше решение.
+              </div>
+            </div>
+          </div>
+
+          <div className="solution-benefits">
+            {[
+              { icon: "Zap", title: "Масштабирование без потолка", desc: "Высокоскоростная линия 60 000 банок/час — закрывает пиковый спрос без overtime и штрафов" },
+              { icon: "Tag", title: "Прозрачная себестоимость", desc: "Собственное производство фиксирует цену банки и сырья — маржа под вашим контролем" },
+              { icon: "Truck", title: "Единый центр отгрузки", desc: "Производство + хранение + поставки в одной системе — никаких разрозненных складов" },
+              { icon: "DollarSign", title: "Дополнительная прибыль", desc: "Свободные мощности — контрактный розлив и ответственное хранение для других брендов" },
+              { icon: "Shuffle", title: "Гибкость по SKU", desc: "Быстрый переналад позволяет запускать новые вкусы без зависимости от подрядчиков" },
+              { icon: "ShieldCheck", title: "Защита от санкций", desc: "Локальный сервис, доступные компоненты, независимость от импортных поставщиков" },
+            ].map((b, i) => (
+              <div className="solution-card" key={i}>
+                <div className="solution-card-icon">
+                  <Icon name={b.icon as IconName} size={24} />
+                </div>
+                <div className="solution-card-title">{b.title}</div>
+                <div className="solution-card-desc">{b.desc}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* GEOGRAPHY */}
-      <section id="geography" className="content-section">
+      {/* ── 4. ПРОЕКТ ───────────────────────────── */}
+      <section id="project" className="content-section dark-section">
         <div className="section-inner">
-          <div className="section-label">География</div>
-          <h2 className="section-title">Место реализации проекта</h2>
-          <div className="geo-grid">
-            <div className="geo-map-placeholder">
-              <div className="map-inner">
-                <div className="map-pulse" />
-                <Icon name="MapPin" size={40} className="map-icon" />
-                <div className="map-label">Деревня Бородино, г. Вязьма</div>
-                <div className="map-sublabel">Смоленская область · трасса М1</div>
-              </div>
+          <div className="section-label light">Проект</div>
+          <h2 className="section-title light">Индустриальный парк «Бородино»</h2>
+
+          {/* География */}
+          <div className="project-geo">
+            <div className="project-geo-map">
+              <div className="map-pulse" />
+              <Icon name="MapPin" size={36} className="map-icon" />
+              <div className="map-label">г. Вязьма, д. Бородино</div>
+              <div className="map-sublabel">Смоленская область · трасса М1</div>
             </div>
-            <div className="geo-info">
+            <div className="project-geo-info">
               {[
-                {
-                  icon: "Navigation",
-                  title: "Расположение",
-                  text: "Трасса М1 (Беларусь), напротив Мелькомбината, г. Вязьма — д. Бородино. Стратегическая точка на пути Москва — запад России.",
-                },
-                {
-                  icon: "Truck",
-                  title: "Транспортная доступность",
-                  text: "Прямой выезд на федеральную трассу М1. Удобная логистика в Москву, регионы ЦФО и западные субъекты РФ.",
-                },
-                {
-                  icon: "Building2",
-                  title: "Окружение",
-                  text: "Рядом — действующий Мелькомбинат. Городская инфраструктура г. Вязьмы: жильё, медицина, образование, трудовые ресурсы.",
-                },
-                {
-                  icon: "Leaf",
-                  title: "Экология и безопасность",
-                  text: "Производство безалкогольных напитков — экологически чистый вид деятельности. Соответствие всем санитарным нормам.",
-                },
+                { icon: "Navigation", title: "Расположение", text: "Трасса М1, напротив Мелькомбината. 200 км от Москвы — прямой выход на федеральную трассу." },
+                { icon: "Truck", title: "Транспорт", text: "Федеральная трасса М1, удобная логистика в Москву, ЦФО и западные регионы." },
+                { icon: "Building2", title: "Окружение", text: "Городская инфраструктура г. Вязьмы: жильё, медицина, образование, трудовые ресурсы." },
+                { icon: "Calendar", title: "Сроки", text: "Реализация 2026–2031. I этап — 2026 г.: проектирование и подготовка территории." },
               ].map((item, i) => (
                 <div className="geo-item" key={i}>
-                  <div className="geo-icon-wrap">
-                    <Icon name={item.icon as IconName} size={20} />
-                  </div>
+                  <div className="geo-icon-wrap"><Icon name={item.icon as IconName} size={18} /></div>
                   <div>
                     <div className="geo-item-title">{item.title}</div>
                     <div className="geo-item-text">{item.text}</div>
@@ -303,61 +290,9 @@ export default function Index() {
               ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* INFRASTRUCTURE */}
-      <section id="infrastructure" className="content-section dark-section">
-        <div className="section-inner">
-          <div className="section-label light">Инфраструктура</div>
-          <h2 className="section-title light">Планируемое строительство</h2>
-          <div className="infra-grid">
-            {[
-              { icon: "Factory", title: "Производственные площади", value: "21 000 м²", desc: "Производственные и складские корпуса с современными инженерными системами" },
-              { icon: "Building2", title: "Офисное здание", value: "60 мест", desc: "Административный блок для управленческого и инженерного персонала" },
-              { icon: "UtensilsCrossed", title: "Комбинат питания", value: "на территории", desc: "Собственная столовая для сотрудников предприятия" },
-              { icon: "Dumbbell", title: "Спортивный комплекс", value: "на территории", desc: "Спортивная инфраструктура для работников парка" },
-              { icon: "Trees", title: "Благоустройство", value: "7 Га", desc: "Комплексное благоустройство всей территории парка" },
-              { icon: "ShieldCheck", title: "Инженерные сети", value: "готовая инфра", desc: "Электричество, газ, вода, канализация — подведены до границ участков" },
-            ].map((item, i) => (
-              <div className="infra-card" key={i}>
-                <div className="infra-icon">
-                  <Icon name={item.icon as IconName} size={24} />
-                </div>
-                <div className="infra-value">{item.value}</div>
-                <div className="infra-title">{item.title}</div>
-                <div className="infra-desc">{item.desc}</div>
-              </div>
-            ))}
-          </div>
-          <div className="timeline">
-            <div className="timeline-title">Этапы реализации проекта</div>
-            <div className="timeline-track">
-              {[
-                { phase: "I этап", period: "2026", desc: "Проектирование, получение разрешений, подготовка территории", status: "active" },
-                { phase: "II этап", period: "2027–2028", desc: "Строительство инженерных сетей и производственных корпусов", status: "upcoming" },
-                { phase: "III этап", period: "2029–2031", desc: "Монтаж оборудования, запуск производств, выход на мощность", status: "upcoming" },
-              ].map((item, i) => (
-                <div key={i} className={`timeline-item ${item.status}`}>
-                  <div className="timeline-dot" />
-                  <div className="timeline-phase">{item.phase}</div>
-                  <div className="timeline-period">{item.period}</div>
-                  <div className="timeline-desc">{item.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PRODUCTION */}
-      <section id="production" className="content-section">
-        <div className="section-inner">
-          <div className="section-label">Производство</div>
-          <h2 className="section-title">Организуемые производства</h2>
-
-          {/* Flagship */}
-          <div className="flagship-card">
+          {/* Главное производство */}
+          <div className="flagship-card" style={{ marginTop: "3rem" }}>
             <div className="flagship-badge">Основное производство</div>
             <div className="flagship-content">
               <div className="flagship-emoji">🥤</div>
@@ -376,42 +311,54 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Страсти */}
-          <div className="passions-block">
-            <div className="passions-label">Главные страсти резидентов</div>
-            <div className="passions-subtitle">Какого инвестора мы хотим?</div>
+          {/* Инфраструктура */}
+          <div className="infra-grid" style={{ marginTop: "3rem" }}>
+            {[
+              { icon: "Factory", title: "Производство и склады", value: "21 000 м²" },
+              { icon: "Building2", title: "Офисное здание", value: "60 мест" },
+              { icon: "UtensilsCrossed", title: "Комбинат питания", value: "на территории" },
+              { icon: "Dumbbell", title: "Спортивный комплекс", value: "на территории" },
+              { icon: "Trees", title: "Благоустройство", value: "7 Га" },
+              { icon: "ShieldCheck", title: "Инженерные сети", value: "готовая инфра" },
+            ].map((item, i) => (
+              <div className="infra-card" key={i}>
+                <div className="infra-icon"><Icon name={item.icon as IconName} size={22} /></div>
+                <div className="infra-value">{item.value}</div>
+                <div className="infra-title">{item.title}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Этапы */}
+          <div className="timeline" style={{ marginTop: "3rem" }}>
+            <div className="timeline-title">Этапы реализации</div>
+            <div className="timeline-track">
+              {[
+                { phase: "I этап", period: "2026", desc: "Проектирование, разрешения, подготовка территории", status: "active" },
+                { phase: "II этап", period: "2027–2028", desc: "Строительство инженерных сетей и корпусов", status: "upcoming" },
+                { phase: "III этап", period: "2029–2031", desc: "Монтаж оборудования, запуск, выход на мощность", status: "upcoming" },
+              ].map((item, i) => (
+                <div key={i} className={`timeline-item ${item.status}`}>
+                  <div className="timeline-dot" />
+                  <div className="timeline-phase">{item.phase}</div>
+                  <div className="timeline-period">{item.period}</div>
+                  <div className="timeline-desc">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Какого инвестора ищем */}
+          <div className="passions-block" style={{ borderTop: "1px solid rgba(0,229,255,0.12)", marginTop: "3rem", paddingTop: "3rem" }}>
+            <div className="passions-label">Какого инвестора мы хотим</div>
+            <div className="passions-subtitle">Главные страсти резидентов</div>
             <div className="passions-grid">
               {[
-                {
-                  num: "01",
-                  emoji: "🏆",
-                  title: "Стать новым локальным лидером",
-                  desc: "После ослабления международных брендов открылось окно возможностей.",
-                },
-                {
-                  num: "02",
-                  emoji: "🎵",
-                  title: "Построить культовый молодёжный бренд",
-                  desc: "Не просто продавать напиток — создать lifestyle. Музыка, gaming, street culture, спорт, digital community.",
-                },
-                {
-                  num: "03",
-                  emoji: "🛒",
-                  title: "Быстрое масштабирование через сети",
-                  desc: "Зайти в X5, Магнит, Красное & Белое, ВкусВилл, федеральные АЗС и маркетплейсы — значит стать настоящим брендом.",
-                },
-                {
-                  num: "04",
-                  emoji: "⚡",
-                  title: "Захват тренда functional drinks",
-                  desc: "No sugar, витамины, адаптогены, caffeine+focus, wellness. Компании хотят быть не газировкой, а функциональным продуктом.",
-                },
-                {
-                  num: "05",
-                  emoji: "🌍",
-                  title: "Создать экспортный бренд",
-                  desc: "Амбиция выйти на рынки СНГ, Ближнего Востока и Азии. Собственное производство — ключевое условие для экспортной экспансии.",
-                },
+                { num: "01", emoji: "🏆", title: "Стать новым локальным лидером", desc: "После ослабления международных брендов открылось окно возможностей." },
+                { num: "02", emoji: "🎵", title: "Построить культовый бренд", desc: "Не просто продавать напиток — создать lifestyle. Музыка, gaming, спорт, digital community." },
+                { num: "03", emoji: "🛒", title: "Масштабирование через сети", desc: "Зайти в X5, Магнит, ВкусВилл, АЗС и маркетплейсы — значит стать настоящим брендом." },
+                { num: "04", emoji: "⚡", title: "Захват тренда functional drinks", desc: "No sugar, витамины, адаптогены, wellness. Быть не газировкой, а функциональным продуктом." },
+                { num: "05", emoji: "🌍", title: "Создать экспортный бренд", desc: "Амбиция выйти на рынки СНГ, Ближнего Востока и Азии." },
               ].map((p, i) => (
                 <div className="passion-card" key={i}>
                   <div className="passion-num">{p.num}</div>
@@ -422,174 +369,10 @@ export default function Index() {
               ))}
             </div>
           </div>
-
         </div>
       </section>
 
-      {/* LOGISTICS HUB */}
-      <section className="content-section dark-section">
-        <div className="section-inner">
-          <div className="hub-layout">
-            <div className="hub-left">
-              <div className="section-label light">Логистика</div>
-              <h2 className="section-title light">Единый центр отгрузки напитков в сети</h2>
-              <p className="hub-lead">
-                Объедините производство, хранение и поставки в одну управляемую систему.<br />
-                Без хаоса, разрозненных складов и срывов поставок.
-              </p>
-              <div className="hub-benefits">
-                {[
-                  { icon: "Zap", text: "Быстрее поставлять продукцию в федеральные сети" },
-                  { icon: "TrendingDown", text: "Сокращать логистические издержки" },
-                  { icon: "Package", text: "Держать стабильный товарный запас" },
-                  { icon: "Sliders", text: "Централизованно управлять SKU и поставками" },
-                  { icon: "Maximize2", text: "Ускорять масштабирование бренда по регионам" },
-                ].map((b, i) => (
-                  <div className="hub-benefit" key={i}>
-                    <div className="hub-benefit-icon">
-                      <Icon name={b.icon as IconName} size={16} />
-                    </div>
-                    <span>{b.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="hub-right">
-              <div className="hub-result">
-                <div className="hub-result-row">
-                  <div className="hub-result-side">
-                    <div className="hub-result-label">Сети получают</div>
-                    <div className="hub-result-value">Стабильность</div>
-                  </div>
-                  <div className="hub-result-divider" />
-                  <div className="hub-result-side">
-                    <div className="hub-result-label">Вы получаете</div>
-                    <div className="hub-result-value accent">Контроль, скорость и рост</div>
-                  </div>
-                </div>
-              </div>
-              <div className="hub-pillars">
-                {[
-                  { num: "01", text: "Одна инфраструктура" },
-                  { num: "02", text: "Один центр управления" },
-                  { num: "03", text: "Максимальная эффективность поставок" },
-                ].map((p, i) => (
-                  <div className="hub-pillar" key={i}>
-                    <span className="hub-pillar-num">{p.num}</span>
-                    <span className="hub-pillar-text">{p.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* EXTRA PROFIT */}
-      <section className="content-section extra-profit-section">
-        <div className="section-inner">
-          <div className="extra-layout">
-            <div className="extra-left">
-              <div className="section-label light">Дополнительный доход</div>
-              <h2 className="section-title light">Дополнительная прибыль на свободных мощностях</h2>
-              <p className="extra-lead">
-                Ваш завод может зарабатывать не только на собственном бренде.
-              </p>
-              <p className="extra-text">
-                Контрактное производство напитков и услуги ответственного хранения превращают производственную инфраструктуру в дополнительный источник стабильного дохода.
-              </p>
-              <div className="extra-conclusion">
-                <span className="extra-conclusion-vs">Пока другие несут постоянные издержки —</span>
-                ваша инфраструктура начинает приносить прибыль на каждом этапе цепочки.
-              </div>
-            </div>
-            <div className="extra-right">
-              <div className="extra-label">Вы получаете:</div>
-              <div className="extra-benefits">
-                {[
-                  { icon: "Activity", text: "Загрузку свободных мощностей круглый год" },
-                  { icon: "DollarSign", text: "Дополнительную выручку от контрактного розлива" },
-                  { icon: "Warehouse", text: "Доход от хранения и логистики" },
-                  { icon: "Clock", text: "Более быструю окупаемость завода" },
-                  { icon: "TrendingDown", text: "Снижение финансовой нагрузки в несезон" },
-                  { icon: "Maximize2", text: "Масштабируемую модель роста" },
-                ].map((b, i) => (
-                  <div className="extra-benefit" key={i}>
-                    <div className="extra-benefit-num">→</div>
-                    <div className="extra-benefit-icon">
-                      <Icon name={b.icon as IconName} size={16} />
-                    </div>
-                    <span>{b.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* MARKET PAINS */}
-      <section id="market-pains" className="content-section dark-section">
-        <div className="section-inner">
-          <h2 className="section-title light pains-hero-title">
-            Каждый сезон бренды теряют миллионы не потому, что нет спроса —<br />
-            <span className="pains-hero-accent">а потому что они физически не могут произвести нужный объём вовремя.</span>
-          </h2>
-          <div className="pains-narrative">
-            <p className="pains-narrative-lead">
-              С апреля по сентябрь рынок перегревается: energy drinks, cold drinks, функциональные напитки показывают пиковый рост, а старые производственные линии перестают справляться.
-            </p>
-            <div className="pains-consequences">
-              <div className="pains-consequences-title">Что происходит в этот момент:</div>
-              <div className="pains-consequences-list">
-                {[
-                  { icon: "Clock", text: "производство уходит в overtime" },
-                  { icon: "TruckOff", text: "срываются поставки" },
-                  { icon: "AlertCircle", text: "сети вводят штрафы" },
-                  { icon: "ShoppingCart", text: "бренд теряет полку" },
-                  { icon: "PackageX", text: "SKU исчезают в самый прибыльный период года" },
-                ].map((c, i) => (
-                  <div className="pains-consequence-item" key={i}>
-                    <Icon name={c.icon as IconName} size={16} />
-                    <span>{c.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="pains-danger">
-              <span className="pains-danger-label">И самое опасное —</span>
-              в этот момент ваш клиент покупает продукт конкурента.
-            </div>
-            <div className="pains-conclusion">
-              Рынок больше не про «сделать хороший напиток».<br />
-              <strong>Рынок — про способность быстро масштабироваться.</strong>
-            </div>
-          </div>
-
-          <div className="sells-block">
-            <div className="sells-title">Что реально продаёт современный завод</div>
-            <div className="sells-grid">
-              {[
-                { icon: "TrendingDown", label: "Снижение cost per liter" },
-                { icon: "Truck", label: "Стабильность поставок" },
-                { icon: "Maximize2", label: "Масштабируемость" },
-                { icon: "Shuffle", label: "Скорость вывода SKU" },
-                { icon: "Shield", label: "Устойчивость к санкциям" },
-                { icon: "Cpu", label: "Автоматизация" },
-                { icon: "BarChart2", label: "Защита маржи" },
-                { icon: "Clock", label: "Uptime и OEE" },
-              ].map((s, i) => (
-                <div className="sells-item" key={i}>
-                  <Icon name={s.icon as IconName} size={20} />
-                  <span>{s.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* INVESTMENT */}
+      {/* ── 5. ИНВЕСТИЦИИ ───────────────────────── */}
       <section id="investment" className="content-section gold-section">
         <div className="section-inner">
           <div className="section-label light">Инвестиции</div>
@@ -628,23 +411,26 @@ export default function Index() {
               ))}
             </div>
           </div>
-
-
         </div>
       </section>
 
-      {/* ADVANTAGES */}
-      <section id="advantages" className="content-section">
+      {/* ── 6. ПРЕИМУЩЕСТВА ─────────────────────── */}
+      <section id="advantages" className="content-section dark-section">
         <div className="section-inner">
-          <div className="section-label">Преимущества</div>
-          <h2 className="section-title">Конкурентные преимущества</h2>
+          <div className="section-label light">Преимущества</div>
+          <h2 className="section-title light">Конкурентные преимущества проекта</h2>
           <div className="adv-grid">
-            {advantages.map((a, i) => (
+            {[
+              { icon: "Zap", title: "Собственное производство", desc: "Прозрачное и стабильное ценообразование за счёт полного контроля над производством" },
+              { icon: "BarChart2", title: "Управление объёмами", desc: "Гибкое управление выпуском без зависимости от контрактных площадок" },
+              { icon: "TrendingDown", title: "Оптимизация себестоимости", desc: "Снижение затрат за счёт вертикальной интеграции и собственной логистики" },
+              { icon: "Truck", title: "Единый центр отгрузки", desc: "Поставки в федеральные сети из одной точки — быстро и без хаоса" },
+              { icon: "DollarSign", title: "Контрактное производство", desc: "Дополнительный доход от свободных мощностей и ответственного хранения" },
+              { icon: "MapPin", title: "Стратегическое расположение", desc: "Трасса М1, г. Вязьма — узловая точка между Москвой и западными регионами" },
+            ].map((a, i) => (
               <div className="adv-card" key={i}>
                 <div className="adv-number">0{i + 1}</div>
-                <div className="adv-icon-wrap">
-                  <Icon name={a.icon as IconName} size={28} />
-                </div>
+                <div className="adv-icon-wrap"><Icon name={a.icon as IconName} size={26} /></div>
                 <div className="adv-title">{a.title}</div>
                 <div className="adv-desc">{a.desc}</div>
               </div>
@@ -653,7 +439,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* CONTACTS */}
+      {/* ── 7. КОНТАКТЫ ─────────────────────────── */}
       <section id="contacts" className="content-section dark-section">
         <div className="section-inner">
           <div className="section-label light">Контакты</div>
@@ -668,9 +454,7 @@ export default function Index() {
                 { icon: "Calendar", label: "Период реализации", val: "2026 – 2031 г." },
               ].map((c, i) => (
                 <div className="contact-row" key={i}>
-                  <div className="contact-icon">
-                    <Icon name={c.icon as IconName} size={18} />
-                  </div>
+                  <div className="contact-icon"><Icon name={c.icon as IconName} size={18} /></div>
                   <div>
                     <div className="contact-label">{c.label}</div>
                     <div className="contact-val">{c.val}</div>
@@ -685,16 +469,15 @@ export default function Index() {
               <input className="form-input" placeholder="Email или телефон" />
               <textarea className="form-textarea" placeholder="Вопрос или комментарий" rows={3} />
               <button className="btn-primary full">
-                Отправить запрос
-                <Icon name="Send" size={16} />
+                Отправить запрос <Icon name="Send" size={16} />
               </button>
-              <div className="form-note">Мы свяжемся с вами в течение одного рабочего дня</div>
+              <div className="form-note">Свяжемся в течение одного рабочего дня</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
+      {/* ── FOOTER ──────────────────────────────── */}
       <footer className="footer">
         <div className="footer-inner">
           <div className="footer-logo">

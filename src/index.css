@@ -481,6 +481,247 @@
   }
 }
 
+/* ── PROBLEM SECTION ──────────────────────────── */
+.problem-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+.problem-lead {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0 0 1.75rem;
+}
+.problem-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.75rem;
+}
+.problem-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.8rem 1.1rem;
+  background: rgba(255, 60, 60, 0.04);
+  border: 1px solid rgba(255, 60, 60, 0.12);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 14px;
+}
+.problem-item-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(255, 60, 60, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 100, 100, 0.8);
+  flex-shrink: 0;
+}
+.problem-danger {
+  padding: 1rem 1.25rem;
+  border-left: 3px solid rgba(255, 60, 60, 0.5);
+  background: rgba(255, 60, 60, 0.05);
+  border-radius: 0 8px 8px 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.problem-danger strong {
+  color: #fff;
+}
+.problem-cost {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 2rem;
+}
+.problem-cost-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--c-gold);
+  margin-bottom: 0.75rem;
+}
+.problem-cost-text {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+}
+.problem-cost-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+  padding: 0.4rem 0;
+}
+.problem-cost-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 100, 100, 0.6);
+  flex-shrink: 0;
+}
+.problem-cost-result {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 60, 60, 0.06);
+  border-radius: 8px;
+  color: rgba(255, 100, 100, 0.8);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Oswald", sans-serif;
+}
+.problem-conclusion {
+  text-align: center;
+  padding: 2.5rem;
+  background: rgba(0, 229, 255, 0.04);
+  border: 1px solid rgba(0, 229, 255, 0.12);
+  border-radius: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18px;
+  line-height: 1.8;
+}
+.problem-conclusion strong {
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .problem-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── SOLUTION SECTION ─────────────────────────── */
+.solution-contrast {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.solution-side {
+  flex: 1;
+  padding: 1.75rem;
+  border-radius: 14px;
+}
+.solution-side.negative {
+  background: rgba(255, 60, 60, 0.05);
+  border: 1px solid rgba(255, 60, 60, 0.2);
+}
+.solution-side.positive {
+  background: rgba(0, 229, 255, 0.05);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+}
+.solution-side-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.solution-side.negative .solution-side-label {
+  color: rgba(255, 100, 100, 0.7);
+}
+.solution-side.positive .solution-side-label {
+  color: var(--c-gold);
+}
+.solution-side-text {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.solution-arrow {
+  color: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+.solution-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.solution-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+.solution-card:hover {
+  border-color: rgba(0, 229, 255, 0.25);
+  transform: translateY(-3px);
+}
+.solution-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(0, 229, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gold);
+  margin-bottom: 1rem;
+}
+.solution-card-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.solution-card-desc {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  line-height: 1.6;
+}
+@media (max-width: 900px) {
+  .solution-contrast {
+    flex-direction: column;
+  }
+  .solution-arrow {
+    transform: rotate(90deg);
+  }
+  .solution-benefits {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .solution-benefits {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── PROJECT GEO ──────────────────────────────── */
+.project-geo {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  align-items: start;
+}
+.project-geo-map {
+  background: linear-gradient(135deg, #0d1520 0%, #091018 100%);
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  border-radius: 16px;
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .project-geo {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── SECTIONS ─────────────────────────────────── */
 .content-section {
   padding: 6rem 2rem;
