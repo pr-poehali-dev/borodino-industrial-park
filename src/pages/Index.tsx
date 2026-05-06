@@ -490,6 +490,65 @@ export default function Index() {
         </div>
       </section>
 
+      {/* LOGISTICS HUB */}
+      <section className="content-section dark-section">
+        <div className="section-inner">
+          <div className="hub-layout">
+            <div className="hub-left">
+              <div className="section-label light">Логистика</div>
+              <h2 className="section-title light">Единый центр отгрузки напитков в сети</h2>
+              <p className="hub-lead">
+                Объедините производство, хранение и поставки в одну управляемую систему.<br />
+                Без хаоса, разрозненных складов и срывов поставок.
+              </p>
+              <div className="hub-benefits">
+                {[
+                  { icon: "Zap", text: "Быстрее поставлять продукцию в федеральные сети" },
+                  { icon: "TrendingDown", text: "Сокращать логистические издержки" },
+                  { icon: "Package", text: "Держать стабильный товарный запас" },
+                  { icon: "Sliders", text: "Централизованно управлять SKU и поставками" },
+                  { icon: "Maximize2", text: "Ускорять масштабирование бренда по регионам" },
+                ].map((b, i) => (
+                  <div className="hub-benefit" key={i}>
+                    <div className="hub-benefit-icon">
+                      <Icon name={b.icon as IconName} size={16} />
+                    </div>
+                    <span>{b.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="hub-right">
+              <div className="hub-result">
+                <div className="hub-result-row">
+                  <div className="hub-result-side">
+                    <div className="hub-result-label">Сети получают</div>
+                    <div className="hub-result-value">Стабильность</div>
+                  </div>
+                  <div className="hub-result-divider" />
+                  <div className="hub-result-side">
+                    <div className="hub-result-label">Вы получаете</div>
+                    <div className="hub-result-value accent">Контроль, скорость и рост</div>
+                  </div>
+                </div>
+              </div>
+              <div className="hub-pillars">
+                {[
+                  { num: "01", text: "Одна инфраструктура" },
+                  { num: "02", text: "Один центр управления" },
+                  { num: "03", text: "Максимальная эффективность поставок" },
+                ].map((p, i) => (
+                  <div className="hub-pillar" key={i}>
+                    <span className="hub-pillar-num">{p.num}</span>
+                    <span className="hub-pillar-text">{p.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* MARKET PAINS */}
       <section id="market-pains" className="content-section dark-section">
         <div className="section-inner">

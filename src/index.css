@@ -1277,6 +1277,132 @@
   }
 }
 
+/* ── LOGISTICS HUB ────────────────────────────── */
+.hub-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.hub-lead {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0 0 2rem;
+}
+.hub-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.hub-benefit {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(0, 229, 255, 0.04);
+  border: 1px solid rgba(0, 229, 255, 0.1);
+  border-radius: 10px;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+.hub-benefit:hover {
+  border-color: rgba(0, 229, 255, 0.25);
+  background: rgba(0, 229, 255, 0.08);
+}
+.hub-benefit-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(0, 229, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gold);
+  flex-shrink: 0;
+}
+.hub-benefit span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+.hub-result {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.hub-result-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.hub-result-side {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem 1rem;
+}
+.hub-result-divider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+.hub-result-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 0.5rem;
+}
+.hub-result-value {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+.hub-result-value.accent {
+  background: linear-gradient(90deg, var(--c-gold), var(--c-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hub-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.hub-pillar {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.1rem 1.5rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.hub-pillar-num {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--c-gold);
+  flex-shrink: 0;
+  min-width: 32px;
+}
+.hub-pillar-text {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+}
+@media (max-width: 900px) {
+  .hub-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
 /* ── CONTROL SECTION ──────────────────────────── */
 .control-section {
   background: var(--c-dark);
