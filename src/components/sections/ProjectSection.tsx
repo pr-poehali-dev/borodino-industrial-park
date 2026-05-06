@@ -8,6 +8,22 @@ export default function ProjectSection() {
         <div className="section-label light">Проект</div>
         <h2 className="section-title light">Индустриальный парк «Бородино»</h2>
 
+        {/* Эскиз проекта */}
+        <div className="project-sketch">
+          <div className="project-sketch-label">
+            <Icon name="FileText" size={14} />
+            Эскиз генерального плана · Масштаб 1:2000
+          </div>
+          <img
+            src="https://cdn.poehali.dev/projects/49f7a74d-a29e-4df6-a9ab-7c61c90787d1/bucket/b7c42da6-a5e5-4719-9db2-2383a1006362.png"
+            alt="Эскиз генерального плана индустриального парка Бородино"
+            className="project-sketch-img"
+          />
+          <div className="project-sketch-caption">
+            Индустриальный парк «Бородино» · г. Вязьма, трасса М1 · площадь 7 Га
+          </div>
+        </div>
+
         {/* География */}
         <div className="project-geo">
           <div className="project-geo-map">
