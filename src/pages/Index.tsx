@@ -311,6 +311,89 @@ export default function Index() {
         </div>
       </section>
 
+      {/* BLOCK 3 — CONTROL */}
+      <section className="content-section control-section">
+        <div className="section-inner">
+          <div className="control-split">
+            <div className="control-left">
+              <div className="control-contrast">
+                <div className="control-contrast-item negative">
+                  <div className="control-contrast-label">Без контроля</div>
+                  <div className="control-contrast-text">
+                    Когда у вас нет контроля над производством —<br />
+                    <strong>вашу прибыль определяет рынок.</strong>
+                  </div>
+                </div>
+                <div className="control-contrast-divider">vs</div>
+                <div className="control-contrast-item positive">
+                  <div className="control-contrast-label">С собственной инфраструктурой</div>
+                  <div className="control-contrast-text">
+                    Когда у вас есть собственная инфраструктура —<br />
+                    <strong>вы сами управляете экономикой бренда.</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div className="control-problem">
+                <div className="control-problem-title">Главная проблема рынка сегодня</div>
+                <p className="control-problem-text">
+                  Одна из главных проблем рынка напитков — непредсказуемая себестоимость.
+                </p>
+                <div className="control-factors">
+                  {[
+                    "Цена банки растёт",
+                    "Стоимость сырья меняется каждый месяц",
+                    "Логистика дорожает",
+                    "Подрядчики пересматривают условия прямо в сезон",
+                  ].map((f, i) => (
+                    <div className="control-factor" key={i}>
+                      <span className="control-factor-dot" />
+                      {f}
+                    </div>
+                  ))}
+                </div>
+                <div className="control-result">
+                  <span className="control-result-label">В итоге бренд не контролирует собственную экономику:</span>
+                  <ul className="control-result-list">
+                    <li>невозможно точно планировать маржу</li>
+                    <li>сложно прогнозировать прибыль</li>
+                    <li>сети давят на цену</li>
+                    <li>любая ошибка в закупке съедает доходность</li>
+                  </ul>
+                </div>
+                <div className="control-danger">
+                  Когда бренд растёт — хаос в себестоимости растёт вместе с ним.
+                </div>
+              </div>
+            </div>
+
+            <div className="control-right">
+              <div className="control-solution-title">
+                Производители нового поколения инвестируют в собственные мощности. Что это даёт:
+              </div>
+              <div className="control-benefits">
+                {[
+                  { icon: "Tag", text: "Прозрачное ценообразование на банку и сырьё" },
+                  { icon: "LineChart", text: "Прогнозируемую себестоимость" },
+                  { icon: "Handshake", text: "Стабильные контракты с поставщиками" },
+                  { icon: "TrendingDown", text: "Снижение зависимости от рыночных скачков" },
+                  { icon: "BarChart2", text: "Контроль маржи на каждом SKU" },
+                  { icon: "Lock", text: "Возможность фиксировать цену на большие объёмы" },
+                  { icon: "ShieldCheck", text: "Защиту бизнеса в высокий сезон" },
+                ].map((b, i) => (
+                  <div className="control-benefit" key={i}>
+                    <div className="control-benefit-icon">
+                      <Icon name={b.icon as IconName} size={18} />
+                    </div>
+                    <span>{b.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* STATS */}
       <section className="stats-section" ref={statsRef}>
         <div className="stats-grid">

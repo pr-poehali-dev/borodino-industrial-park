@@ -1277,6 +1277,197 @@
   }
 }
 
+/* ── CONTROL SECTION ──────────────────────────── */
+.control-section {
+  background: var(--c-dark);
+}
+.control-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.control-contrast {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 2.5rem;
+}
+.control-contrast-item {
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+.control-contrast-item.negative {
+  background: rgba(255, 60, 60, 0.06);
+  border: 1px solid rgba(255, 60, 60, 0.2);
+}
+.control-contrast-item.positive {
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+}
+.control-contrast-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.control-contrast-item.negative .control-contrast-label {
+  color: rgba(255, 100, 100, 0.7);
+}
+.control-contrast-item.positive .control-contrast-label {
+  color: var(--c-gold);
+}
+.control-contrast-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+}
+.control-contrast-text strong {
+  color: #fff;
+}
+.control-contrast-divider {
+  text-align: center;
+  padding: 0.6rem 0;
+  font-family: "Oswald", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.1em;
+}
+.control-problem-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+.control-problem-text {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 1.25rem;
+}
+.control-factors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.control-factor {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+}
+.control-factor-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 100, 100, 0.6);
+  flex-shrink: 0;
+}
+.control-result {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.control-result-label {
+  display: block;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.75rem;
+}
+.control-result-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.control-result-list li {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+  padding-left: 1rem;
+  position: relative;
+}
+.control-result-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: rgba(255, 100, 100, 0.6);
+  font-size: 12px;
+}
+.control-danger {
+  font-family: "Oswald", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 100, 100, 0.8);
+  line-height: 1.5;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 60, 60, 0.06);
+  border-left: 3px solid rgba(255, 60, 60, 0.4);
+  border-radius: 0 8px 8px 0;
+}
+.control-solution-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.5;
+  margin-bottom: 1.75rem;
+}
+.control-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.control-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(0, 229, 255, 0.04);
+  border: 1px solid rgba(0, 229, 255, 0.1);
+  border-radius: 10px;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+.control-benefit:hover {
+  border-color: rgba(0, 229, 255, 0.25);
+  background: rgba(0, 229, 255, 0.07);
+}
+.control-benefit-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(0, 229, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gold);
+  flex-shrink: 0;
+}
+.control-benefit span {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 6px;
+}
+@media (max-width: 900px) {
+  .control-split {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
 /* ── PAINS HERO TITLE ─────────────────────────── */
 .pains-hero-title {
   font-size: clamp(1.6rem, 3.5vw, 2.8rem) !important;
