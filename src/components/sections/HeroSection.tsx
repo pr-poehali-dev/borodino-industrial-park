@@ -55,32 +55,32 @@ export default function HeroSection({ scrollTo }: HeroSectionProps) {
 
   return (
     <>
-      {/* ── 1. HERO — КРЮЧОК ────────────────────── */}
+      {/* ── HERO ──────────────────────────────────── */}
       <section id="overview" className="hero-section">
         <div className="hero-bg" style={{ backgroundImage: `url(${HERO_IMAGE})` }} />
         <div className="hero-overlay" />
         <div className="hero-glow" />
-        <div className="hero-grid-lines" />
+
         <div className="hero-content">
-          <div className="hero-badge">Индустриальный парк «Бородино» · г. Вязьма</div>
-          <h1 className="hero-title">
-            Пока другие ждут свободные окна<br />
-            на контрактных площадках —
-            <span className="hero-accent">вы закрываете спрос и забираете рынок.</span>
+          <div className="hero-eyebrow">Инвестиционный проект</div>
+          <h1 className="hero-headline">
+            Индустриальный<br />парк
+            <span className="hero-headline-accent"> «Бородино»</span>
           </h1>
-          <p className="hero-subtitle">
-            Строительство индустриальной площадки 7 Га с готовой инфраструктурой
-            для размещения производств напитков и складских мощностей · трасса М1
+          <p className="hero-tagline">
+            г. Вязьма · трасса М1 · 7 Га · запуск 2026
           </p>
           <div className="hero-actions">
             <button className="btn-primary" onClick={() => scrollTo("investment")}>
-              Условия инвестирования <Icon name="ArrowRight" size={18} />
+              Условия инвестирования
+              <Icon name="ArrowRight" size={16} />
             </button>
             <button className="btn-outline" onClick={() => scrollTo("problem")}>
-              Узнать подробнее
+              Подробнее
             </button>
           </div>
         </div>
+
         <div className="scroll-indicator" onClick={() => scrollTo("problem")}>
           <Icon name="ChevronDown" size={24} />
         </div>
@@ -89,10 +89,10 @@ export default function HeroSection({ scrollTo }: HeroSectionProps) {
       {/* ── STATS ───────────────────────────────── */}
       <section className="stats-section" ref={statsRef}>
         <div className="stats-grid">
-          <StatCard value={7} suffix=" Га" label="Площадь площадки" delay={0} start={statsInView} />
-          <StatCard value={3} suffix=" млрд ₽" label="Объём инвестиций" delay={150} start={statsInView} />
-          <StatCard value={250} suffix="+" label="Рабочих мест" delay={300} start={statsInView} />
-          <StatCard value={60} suffix=" тыс/ч" label="Банок — мощность линии" delay={450} start={statsInView} />
+          <StatCard value={7}   suffix=" Га"      label="Площадь площадки"        delay={0}   start={statsInView} />
+          <StatCard value={3}   suffix=" млрд ₽"  label="Объём инвестиций"         delay={150} start={statsInView} />
+          <StatCard value={250} suffix="+"         label="Рабочих мест"             delay={300} start={statsInView} />
+          <StatCard value={60}  suffix=" тыс/ч"   label="Банок — мощность линии"   delay={450} start={statsInView} />
         </div>
       </section>
     </>

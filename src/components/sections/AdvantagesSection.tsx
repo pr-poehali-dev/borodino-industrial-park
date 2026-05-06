@@ -5,8 +5,8 @@ export default function AdvantagesSection() {
   return (
     <section id="advantages" className="content-section dark-section">
       <div className="section-inner">
-        <div className="section-label light">Преимущества</div>
-        <h2 className="section-title light">Конкурентные преимущества проекта</h2>
+        <div className="section-label light reveal">Преимущества</div>
+        <h2 className="section-title light reveal reveal-delay-1">Конкурентные<br />преимущества.</h2>
         <div className="adv-grid">
           {[
             { icon: "Zap", title: "Собственное производство", desc: "Прозрачное и стабильное ценообразование за счёт полного контроля над производством" },

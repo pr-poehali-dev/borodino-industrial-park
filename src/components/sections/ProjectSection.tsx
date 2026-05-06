@@ -5,8 +5,8 @@ export default function ProjectSection() {
   return (
     <section id="project" className="content-section dark-section">
       <div className="section-inner">
-        <div className="section-label light">Проект</div>
-        <h2 className="section-title light">Индустриальный парк «Бородино»</h2>
+        <div className="section-label light reveal">Проект</div>
+        <h2 className="section-title light reveal reveal-delay-1">Индустриальный парк<br />«Бородино».</h2>
 
         {/* Эскиз проекта */}
         <div className="project-sketch">

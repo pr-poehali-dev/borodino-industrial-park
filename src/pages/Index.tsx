@@ -5,6 +5,7 @@ import ProblemSolution from "@/components/sections/ProblemSolution";
 import AdvantagesSection from "@/components/sections/AdvantagesSection";
 import ProjectSection from "@/components/sections/ProjectSection";
 import InvestmentContacts from "@/components/sections/InvestmentContacts";
+import { useReveal } from "@/hooks/useReveal";
 
 const navItems = [
   { id: "overview", label: "Обзор" },
@@ -17,6 +18,7 @@ const navItems = [
 ];
 
 export default function Index() {
+  useReveal();
   const [activeSection, setActiveSection] = useState("overview");
   const [menuOpen, setMenuOpen] = useState(false);
 

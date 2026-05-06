@@ -7,8 +7,8 @@ export default function InvestmentContacts() {
       {/* ── 5. ИНВЕСТИЦИИ ───────────────────────── */}
       <section id="investment" className="content-section gold-section">
         <div className="section-inner">
-          <div className="section-label light">Инвестиции</div>
-          <h2 className="section-title light">Финансирование проекта</h2>
+          <div className="section-label light reveal">Инвестиции</div>
+          <h2 className="section-title light reveal reveal-delay-1">Финансирование<br />проекта.</h2>
           <div className="invest-layout">
             <div className="invest-main">
               <div className="invest-card featured">
