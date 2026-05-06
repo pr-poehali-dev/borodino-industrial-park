@@ -412,9 +412,39 @@ export default function Index() {
         <div className="section-inner">
           <div className="section-label light">За счёт чего мы предлагаем достичь</div>
           <h2 className="section-title light pains-hero-title">
-            Мы создаём не просто завод — мы закрываем системные боли производителей напитков.
-            <span className="pains-hero-sub"> Каждое решение в проекте «Бородино» спроектировано под реальные задачи бизнеса.</span>
+            Каждый сезон бренды теряют миллионы не потому, что нет спроса —<br />
+            <span className="pains-hero-accent">а потому что они физически не могут произвести нужный объём вовремя.</span>
           </h2>
+          <div className="pains-narrative">
+            <p className="pains-narrative-lead">
+              С апреля по сентябрь рынок перегревается: energy drinks, cold drinks, функциональные напитки показывают пиковый рост, а старые производственные линии перестают справляться.
+            </p>
+            <div className="pains-consequences">
+              <div className="pains-consequences-title">Что происходит в этот момент:</div>
+              <div className="pains-consequences-list">
+                {[
+                  { icon: "Clock", text: "производство уходит в overtime" },
+                  { icon: "TruckOff", text: "срываются поставки" },
+                  { icon: "AlertCircle", text: "сети вводят штрафы" },
+                  { icon: "ShoppingCart", text: "бренд теряет полку" },
+                  { icon: "PackageX", text: "SKU исчезают в самый прибыльный период года" },
+                ].map((c, i) => (
+                  <div className="pains-consequence-item" key={i}>
+                    <Icon name={c.icon as IconName} size={16} />
+                    <span>{c.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="pains-danger">
+              <span className="pains-danger-label">И самое опасное —</span>
+              в этот момент ваш клиент покупает продукт конкурента.
+            </div>
+            <div className="pains-conclusion">
+              Рынок больше не про «сделать хороший напиток».<br />
+              <strong>Рынок — про способность быстро масштабироваться.</strong>
+            </div>
+          </div>
 
           <div className="pains-grid">
             {marketPains.map((pain, i) => (
