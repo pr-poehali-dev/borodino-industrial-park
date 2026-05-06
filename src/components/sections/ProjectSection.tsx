@@ -3,10 +3,10 @@ type IconName = string;
 
 export default function ProjectSection() {
   return (
-    <section id="project" className="content-section dark-section">
+    <section id="project" className="content-section">
       <div className="section-inner">
-        <div className="section-label light reveal">Проект</div>
-        <h2 className="section-title light reveal reveal-delay-1">Индустриальный парк<br />«Бородино».</h2>
+        <div className="section-label reveal">Проект</div>
+        <h2 className="section-title reveal reveal-delay-1">Индустриальный парк<br />«Бородино».</h2>
 
         {/* Эскиз проекта */}
         <div className="project-sketch">

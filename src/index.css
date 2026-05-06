@@ -1130,17 +1130,15 @@
   display: block;
   object-fit: contain;
   max-height: 600px;
-  background: #e8e8e8;
-  mix-blend-mode: luminosity;
-  filter: contrast(1.05);
+  background: #f5f5f5;
 }
 .project-sketch-caption {
   padding: 1rem 1.5rem;
-  background: var(--c-bg4);
+  background: #f8fafc;
   border-top: 1px solid var(--c-border2);
   font-size: 17px;
   font-weight: 700;
-  color: #f5f5f7;
+  color: var(--c-text);
   letter-spacing: -0.01em;
   text-align: center;
 }
@@ -1149,22 +1147,23 @@
 .building-gallery {
   margin-top: 2rem;
   border: 1px solid var(--c-border2);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  background: var(--c-bg2);
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
 }
 .building-gallery-label {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.65rem 1.25rem;
-  background: var(--c-bg4);
+  background: #f8fafc;
   border-bottom: 1px solid var(--c-border2);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(245, 245, 247, 0.4);
+  color: var(--c-text3);
 }
 .building-gallery-grid {
   display: grid;
@@ -1173,6 +1172,8 @@
 }
 .building-gallery-item {
   border-right: 1px solid var(--c-border2);
+  display: flex;
+  flex-direction: column;
 }
 .building-gallery-item:last-child {
   border-right: none;
@@ -1180,16 +1181,20 @@
 .building-gallery-img {
   display: block;
   width: 100%;
-  object-fit: cover;
-  max-height: 320px;
-  background: #1a1a1a;
+  height: 280px;
+  object-fit: contain;
+  object-position: center;
+  background: #f0f0f0;
+  flex: 1;
 }
 .building-gallery-caption {
-  padding: 0.6rem 1rem;
-  font-size: 12px;
-  color: var(--c-text3);
+  padding: 0.75rem 1rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c-text2);
   border-top: 1px solid var(--c-border2);
   text-align: center;
+  background: #f8fafc;
 }
 @media (max-width: 700px) {
   .building-gallery-grid {
@@ -1212,7 +1217,8 @@
   align-items: start;
 }
 .project-geo-map {
-  background: var(--c-bg3);
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
   border-radius: 18px;
   aspect-ratio: 4/3;
   display: flex;
@@ -1250,17 +1256,17 @@
   }
 }
 .map-icon {
-  color: #2997ff;
+  color: var(--c-blue);
   margin-bottom: 0.75rem;
 }
 .map-label {
   font-weight: 700;
   font-size: 1rem;
-  color: #f5f5f7;
+  color: var(--c-text);
   letter-spacing: -0.01em;
 }
 .map-sublabel {
-  color: rgba(245, 245, 247, 0.65);
+  color: var(--c-text2);
   font-size: 13px;
   margin-top: 4px;
 }
