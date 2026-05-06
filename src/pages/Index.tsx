@@ -549,6 +549,49 @@ export default function Index() {
         </div>
       </section>
 
+      {/* EXTRA PROFIT */}
+      <section className="content-section extra-profit-section">
+        <div className="section-inner">
+          <div className="extra-layout">
+            <div className="extra-left">
+              <div className="section-label light">Дополнительный доход</div>
+              <h2 className="section-title light">Дополнительная прибыль на свободных мощностях</h2>
+              <p className="extra-lead">
+                Ваш завод может зарабатывать не только на собственном бренде.
+              </p>
+              <p className="extra-text">
+                Контрактное производство напитков и услуги ответственного хранения превращают производственную инфраструктуру в дополнительный источник стабильного дохода.
+              </p>
+              <div className="extra-conclusion">
+                <span className="extra-conclusion-vs">Пока другие несут постоянные издержки —</span>
+                ваша инфраструктура начинает приносить прибыль на каждом этапе цепочки.
+              </div>
+            </div>
+            <div className="extra-right">
+              <div className="extra-label">Вы получаете:</div>
+              <div className="extra-benefits">
+                {[
+                  { icon: "Activity", text: "Загрузку свободных мощностей круглый год" },
+                  { icon: "DollarSign", text: "Дополнительную выручку от контрактного розлива" },
+                  { icon: "Warehouse", text: "Доход от хранения и логистики" },
+                  { icon: "Clock", text: "Более быструю окупаемость завода" },
+                  { icon: "TrendingDown", text: "Снижение финансовой нагрузки в несезон" },
+                  { icon: "Maximize2", text: "Масштабируемую модель роста" },
+                ].map((b, i) => (
+                  <div className="extra-benefit" key={i}>
+                    <div className="extra-benefit-num">→</div>
+                    <div className="extra-benefit-icon">
+                      <Icon name={b.icon as IconName} size={16} />
+                    </div>
+                    <span>{b.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* MARKET PAINS */}
       <section id="market-pains" className="content-section dark-section">
         <div className="section-inner">
