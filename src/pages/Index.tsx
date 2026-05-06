@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Icon from "@/components/ui/icon";
 import HeroSection from "@/components/sections/HeroSection";
 import ProblemSolution from "@/components/sections/ProblemSolution";
+import AdvantagesSection from "@/components/sections/AdvantagesSection";
 import ProjectSection from "@/components/sections/ProjectSection";
 import InvestmentContacts from "@/components/sections/InvestmentContacts";
 
@@ -9,9 +10,9 @@ const navItems = [
   { id: "overview", label: "Обзор" },
   { id: "problem", label: "Проблема" },
   { id: "solution", label: "Решение" },
+  { id: "advantages", label: "Преимущества" },
   { id: "project", label: "Проект" },
   { id: "investment", label: "Инвестиции" },
-  { id: "advantages", label: "Преимущества" },
   { id: "contacts", label: "Контакты" },
 ];
 
@@ -69,6 +70,7 @@ export default function Index() {
 
       <HeroSection scrollTo={scrollTo} />
       <ProblemSolution scrollTo={scrollTo} />
+      <AdvantagesSection />
       <ProjectSection />
       <InvestmentContacts />
 
