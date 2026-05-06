@@ -27,9 +27,7 @@ function useInView(threshold = 0.2) {
   const [inView, setInView] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setInView(true);
-      },
+      ([entry]) => { if (entry.isIntersecting) setInView(true); },
       { threshold }
     );
     if (ref.current) observer.observe(ref.current);
@@ -38,26 +36,13 @@ function useInView(threshold = 0.2) {
   return { ref, inView };
 }
 
-function StatCard({
-  value,
-  suffix,
-  label,
-  delay = 0,
-  start,
-}: {
-  value: number;
-  suffix: string;
-  label: string;
-  delay?: number;
-  start: boolean;
+function StatCard({ value, suffix, label, delay = 0, start }: {
+  value: number; suffix: string; label: string; delay?: number; start: boolean;
 }) {
   const count = useCounter(value, 2000, start);
   return (
     <div className="stat-card" style={{ animationDelay: `${delay}ms` }}>
-      <div className="stat-value">
-        {count}
-        <span className="stat-suffix">{suffix}</span>
-      </div>
+      <div className="stat-value">{count}<span className="stat-suffix">{suffix}</span></div>
       <div className="stat-label">{label}</div>
     </div>
   );
@@ -73,19 +58,13 @@ const navItems = [
   { id: "contacts", label: "Контакты" },
 ];
 
-const caseStudies = [
-  { title: "Технопарк «Нева»", location: "Санкт-Петербург", result: "+2 400 рабочих мест", roi: "IRR 24%", year: "2019–2022" },
-  { title: "Индустриальный парк «Волга»", location: "Нижний Новгород", result: "38 резидентов", roi: "IRR 21%", year: "2018–2021" },
-  { title: "ОЭЗ «Уральский»", location: "Екатеринбург", result: "₽12 млрд выручки", roi: "IRR 19%", year: "2020–2023" },
-];
-
 const advantages = [
-  { icon: "Zap", title: "Готовая инфраструктура", desc: "Электричество, газ, вода — всё подведено до границ участков" },
-  { icon: "Shield", title: "Налоговые льготы", desc: "Резиденты получают освобождение от налога на имущество на 10 лет" },
-  { icon: "TrendingUp", title: "Высокий спрос", desc: "Очередь из 40+ потенциальных резидентов уже сформирована" },
-  { icon: "Globe", title: "Транспортная доступность", desc: "М-12, ж/д ветка, 35 км от федеральной трассы" },
-  { icon: "Users", title: "Кадровый потенциал", desc: "250 000 человек трудоспособного населения в радиусе 50 км" },
-  { icon: "Award", title: "Господдержка", desc: "Проект включён в региональную инвестпрограмму 2025–2030" },
+  { icon: "Zap", title: "Собственное производство", desc: "Прозрачное и стабильное ценообразование за счёт полного контроля над производственным процессом" },
+  { icon: "BarChart2", title: "Управление объёмами", desc: "Гибкое управление объёмами выпуска безалкогольных напитков в алюминиевой банке под нужды бизнеса" },
+  { icon: "TrendingDown", title: "Оптимизация себестоимости", desc: "Снижение затрат на производство и логистику за счёт вертикальной интеграции" },
+  { icon: "Truck", title: "Единый центр отгрузки", desc: "Централизованная отгрузка напитков в сети — ускорение сроков и снижение транспортных расходов" },
+  { icon: "DollarSign", title: "Контрактное производство", desc: "Дополнительный доход от производства по заказу сторонних брендов и ответственного хранения" },
+  { icon: "MapPin", title: "Стратегическое расположение", desc: "Трасса М1, г. Вязьма — узловая точка между Москвой и западными регионами России" },
 ];
 
 export default function Index() {
@@ -98,10 +77,7 @@ export default function Index() {
       const scrollY = window.scrollY + 120;
       for (let i = navItems.length - 1; i >= 0; i--) {
         const el = document.getElementById(navItems[i].id);
-        if (el && el.offsetTop <= scrollY) {
-          setActiveSection(navItems[i].id);
-          break;
-        }
+        if (el && el.offsetTop <= scrollY) { setActiveSection(navItems[i].id); break; }
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -120,7 +96,7 @@ export default function Index() {
         <div className="navbar-inner">
           <div className="navbar-logo">
             <span className="logo-mark">ИП</span>
-            <span className="logo-text">ИндустриПарк</span>
+            <span className="logo-text">Бородино</span>
           </div>
           <div className="navbar-links">
             {navItems.map((item) => (
@@ -157,16 +133,15 @@ export default function Index() {
         <div className="hero-overlay" />
         <div className="hero-grid-lines" />
         <div className="hero-content">
-          <div className="hero-badge">Инвестиционная презентация · 2025</div>
+          <div className="hero-badge">Инвестиционная презентация · 2026–2031</div>
           <h1 className="hero-title">
-            Индустриальный
+            Индустриальный парк
             <br />
-            <span className="hero-accent">Парк Будущего</span>
+            <span className="hero-accent">«Бородино»</span>
           </h1>
           <p className="hero-subtitle">
-            Стратегический объект для размещения высокотехнологичных производств,
-            <br />
-            логистики и технологических компаний
+            Строительство индустриальной площадки на 7 Га с готовой инфраструктурой<br />
+            для размещения производств и складских мощностей · г. Вязьма, трасса М1
           </p>
           <div className="hero-actions">
             <button className="btn-primary" onClick={() => scrollTo("investment")}>
@@ -174,7 +149,7 @@ export default function Index() {
               <Icon name="ArrowRight" size={18} />
             </button>
             <button className="btn-outline" onClick={() => scrollTo("geography")}>
-              Узнать подробнее
+              О проекте
             </button>
           </div>
         </div>
@@ -186,10 +161,10 @@ export default function Index() {
       {/* STATS */}
       <section className="stats-section" ref={statsRef}>
         <div className="stats-grid">
-          <StatCard value={250} suffix=" га" label="Общая площадь парка" delay={0} start={statsInView} />
-          <StatCard value={40} suffix="+" label="Потенциальных резидентов" delay={150} start={statsInView} />
-          <StatCard value={15} suffix=" млрд" label="Объём инвестиций, ₽" delay={300} start={statsInView} />
-          <StatCard value={3500} suffix="+" label="Планируемых рабочих мест" delay={450} start={statsInView} />
+          <StatCard value={7} suffix=" Га" label="Площадь индустриальной площадки" delay={0} start={statsInView} />
+          <StatCard value={3} suffix=" млрд ₽" label="Объём инвестиций" delay={150} start={statsInView} />
+          <StatCard value={250} suffix="+" label="Создаваемых рабочих мест" delay={300} start={statsInView} />
+          <StatCard value={60} suffix=" тыс." label="Банок в час (мощность линии)" delay={450} start={statsInView} />
         </div>
       </section>
 
@@ -203,16 +178,32 @@ export default function Index() {
               <div className="map-inner">
                 <div className="map-pulse" />
                 <Icon name="MapPin" size={40} className="map-icon" />
-                <div className="map-label">Центральный федеральный округ</div>
-                <div className="map-sublabel">~200 км от Москвы</div>
+                <div className="map-label">Деревня Бородино, г. Вязьма</div>
+                <div className="map-sublabel">Смоленская область · трасса М1</div>
               </div>
             </div>
             <div className="geo-info">
               {[
-                { icon: "Navigation", title: "Расположение", text: "Центральный федеральный округ, 200 км от Москвы. Развитая транспортная сеть M-12 и региональные дороги." },
-                { icon: "Train", title: "Транспорт", text: "Прямая ж/д ветка до промзоны, выход на федеральную трассу М-12, 40 минут до аэропорта." },
-                { icon: "Building2", title: "Окружение", text: "Административный центр субъекта, развитая городская инфраструктура, жильё, медицина, образование." },
-                { icon: "Leaf", title: "Экология", text: "Санитарно-защитная зона соблюдена. Расположение вне водоохранных зон. Безопасно для окружающей среды." },
+                {
+                  icon: "Navigation",
+                  title: "Расположение",
+                  text: "Трасса М1 (Беларусь), напротив Мелькомбината, г. Вязьма — д. Бородино. Стратегическая точка на пути Москва — запад России.",
+                },
+                {
+                  icon: "Truck",
+                  title: "Транспортная доступность",
+                  text: "Прямой выезд на федеральную трассу М1. Удобная логистика в Москву, регионы ЦФО и западные субъекты РФ.",
+                },
+                {
+                  icon: "Building2",
+                  title: "Окружение",
+                  text: "Рядом — действующий Мелькомбинат. Городская инфраструктура г. Вязьмы: жильё, медицина, образование, трудовые ресурсы.",
+                },
+                {
+                  icon: "Leaf",
+                  title: "Экология и безопасность",
+                  text: "Производство безалкогольных напитков — экологически чистый вид деятельности. Соответствие всем санитарным нормам.",
+                },
               ].map((item, i) => (
                 <div className="geo-item" key={i}>
                   <div className="geo-icon-wrap">
@@ -233,15 +224,15 @@ export default function Index() {
       <section id="infrastructure" className="content-section dark-section">
         <div className="section-inner">
           <div className="section-label light">Инфраструктура</div>
-          <h2 className="section-title light">Строительство и инженерия</h2>
+          <h2 className="section-title light">Планируемое строительство</h2>
           <div className="infra-grid">
             {[
-              { icon: "Zap", title: "Электроснабжение", value: "50 МВт", desc: "Выделенная мощность от двух независимых источников" },
-              { icon: "Flame", title: "Газоснабжение", value: "3 м³/ч", desc: "Подведён магистральный газопровод высокого давления" },
-              { icon: "Droplets", title: "Водоснабжение", value: "5 000 м³/сут", desc: "Промышленный водозабор, очистные сооружения" },
-              { icon: "Wifi", title: "Телекоммуникации", value: "10 Гбит/с", desc: "Волоконно-оптика двух операторов, резервирование" },
-              { icon: "Truck", title: "Дороги", value: "12 км", desc: "Внутренние дороги с твёрдым покрытием, освещение" },
-              { icon: "ShieldCheck", title: "Безопасность", value: "24/7", desc: "Периметральная охрана, видеонаблюдение, КПП" },
+              { icon: "Factory", title: "Производственные площади", value: "21 000 м²", desc: "Производственные и складские корпуса с современными инженерными системами" },
+              { icon: "Building2", title: "Офисное здание", value: "60 мест", desc: "Административный блок для управленческого и инженерного персонала" },
+              { icon: "UtensilsCrossed", title: "Комбинат питания", value: "на территории", desc: "Собственная столовая для сотрудников предприятия" },
+              { icon: "Dumbbell", title: "Спортивный комплекс", value: "на территории", desc: "Спортивная инфраструктура для работников парка" },
+              { icon: "Trees", title: "Благоустройство", value: "7 Га", desc: "Комплексное благоустройство всей территории парка" },
+              { icon: "ShieldCheck", title: "Инженерные сети", value: "готовая инфра", desc: "Электричество, газ, вода, канализация — подведены до границ участков" },
             ].map((item, i) => (
               <div className="infra-card" key={i}>
                 <div className="infra-icon">
@@ -254,12 +245,12 @@ export default function Index() {
             ))}
           </div>
           <div className="timeline">
-            <div className="timeline-title">Этапы строительства</div>
+            <div className="timeline-title">Этапы реализации проекта</div>
             <div className="timeline-track">
               {[
-                { phase: "I этап", period: "2024–2025", desc: "Инженерные сети, первые 80 га", status: "active" },
-                { phase: "II этап", period: "2025–2026", desc: "Промышленная зона, склады", status: "upcoming" },
-                { phase: "III этап", period: "2026–2027", desc: "Деловой квартал, R&D-центр", status: "upcoming" },
+                { phase: "I этап", period: "2026", desc: "Проектирование, получение разрешений, подготовка территории", status: "active" },
+                { phase: "II этап", period: "2027–2028", desc: "Строительство инженерных сетей и производственных корпусов", status: "upcoming" },
+                { phase: "III этап", period: "2029–2031", desc: "Монтаж оборудования, запуск производств, выход на мощность", status: "upcoming" },
               ].map((item, i) => (
                 <div key={i} className={`timeline-item ${item.status}`}>
                   <div className="timeline-dot" />
@@ -277,15 +268,37 @@ export default function Index() {
       <section id="production" className="content-section">
         <div className="section-inner">
           <div className="section-label">Производство</div>
-          <h2 className="section-title">Производства и возможности</h2>
+          <h2 className="section-title">Организуемые производства</h2>
+
+          {/* Flagship */}
+          <div className="flagship-card">
+            <div className="flagship-badge">Основное производство</div>
+            <div className="flagship-content">
+              <div className="flagship-emoji">🥤</div>
+              <div>
+                <div className="flagship-title">Безалкогольные напитки в алюминиевой банке</div>
+                <div className="flagship-desc">
+                  Производственная линия мощностью <strong>60 000 банок в час</strong>. Полный цикл: розлив, укупорка, этикетировка, упаковка. Инвестор — компания <strong>Бренд Билдинг Групп</strong>.
+                </div>
+                <div className="flagship-tags">
+                  <span className="tag">60 000 банок/час</span>
+                  <span className="tag">Алюминиевая Ева-банка</span>
+                  <span className="tag">Контрактное производство</span>
+                  <span className="tag">Ответственное хранение</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="prod-subtitle">Дополнительные производства</div>
           <div className="prod-grid">
             {[
-              { emoji: "🏭", title: "Лёгкая промышленность", desc: "Готовые корпуса от 500 м², монтаж оборудования под ключ" },
-              { emoji: "📦", title: "Логистика и склады", desc: "Склады класса А с температурным режимом, 30 000 м² в наличии" },
-              { emoji: "🔬", title: "R&D и технологии", desc: "Лаборатории, опытные производства, коворкинг для стартапов" },
-              { emoji: "🌱", title: "Агропереработка", desc: "Пищевые производства, сертифицированные цеха, холодовая цепь" },
-              { emoji: "⚡", title: "Электроника", desc: "Производство ПЭ и ПП в чистых помещениях класса ISO 7–8" },
-              { emoji: "🚗", title: "Автокомпоненты", desc: "Поставщики 1-го уровня, штамповка, пластик, сборка" },
+              { emoji: "🍹", title: "Производство соков", desc: "Натуральные и восстановленные соки, нектары, морсы" },
+              { emoji: "🍼", title: "Детское питание", desc: "Специализированное питание с соблюдением стандартов качества" },
+              { emoji: "🍫", title: "Кондитерские изделия", desc: "Батончики, снэки, здоровое питание — растущий сегмент рынка" },
+              { emoji: "📦", title: "Производство упаковки", desc: "Стрейч, полиэтилен, термоусадочные плёнки для нужд производств парка" },
+              { emoji: "🏪", title: "Складской комплекс", desc: "Ответственное хранение, услуги фулфилмента для партнёров" },
+              { emoji: "🔧", title: "Сервисные услуги", desc: "Техническое обслуживание, аренда производственных мощностей" },
             ].map((item, i) => (
               <div className="prod-card" key={i}>
                 <div className="prod-emoji">{item.emoji}</div>
@@ -301,17 +314,17 @@ export default function Index() {
       <section id="investment" className="content-section gold-section">
         <div className="section-inner">
           <div className="section-label light">Инвестиции</div>
-          <h2 className="section-title light">Финансирование и доходность</h2>
+          <h2 className="section-title light">Финансирование проекта</h2>
           <div className="invest-layout">
             <div className="invest-main">
               <div className="invest-card featured">
-                <div className="invest-card-label">Объём проекта</div>
-                <div className="invest-big-num">₽15 млрд</div>
+                <div className="invest-card-label">Общий объём инвестиций</div>
+                <div className="invest-big-num">₽3 млрд</div>
                 <div className="invest-details">
                   {[
-                    { label: "Собственные средства", val: "30%" },
-                    { label: "Банковское финансирование", val: "45%" },
-                    { label: "Привлечённые инвесторы", val: "25%" },
+                    { label: "Период реализации", val: "2026–2031" },
+                    { label: "Площадь застройки", val: "21 000 м²" },
+                    { label: "Площадь территории", val: "7 Га" },
                   ].map((r, i) => (
                     <div className="invest-row" key={i}>
                       <span>{r.label}</span>
@@ -323,10 +336,10 @@ export default function Index() {
             </div>
             <div className="invest-metrics">
               {[
-                { label: "Целевой IRR", val: "22%", icon: "TrendingUp" },
-                { label: "Срок окупаемости", val: "6 лет", icon: "Clock" },
-                { label: "NPV проекта", val: "₽4,2 млрд", icon: "DollarSign" },
-                { label: "Горизонт инвестирования", val: "10 лет", icon: "Calendar" },
+                { label: "Рабочих мест", val: "250+", icon: "Users" },
+                { label: "Мощность линии", val: "60 тыс/ч", icon: "Zap" },
+                { label: "Срок реализации", val: "5 лет", icon: "Clock" },
+                { label: "Площадь парка", val: "7 Га", icon: "Map" },
               ].map((m, i) => (
                 <div className="metric-card" key={i}>
                   <Icon name={m.icon as IconName} size={20} className="metric-icon" />
@@ -336,30 +349,30 @@ export default function Index() {
               ))}
             </div>
           </div>
-          <div className="cases-title">Аналогичные реализованные проекты</div>
-          <div className="cases-grid">
-            {caseStudies.map((c, i) => (
-              <div className="case-card" key={i}>
-                <div className="case-header">
-                  <div className="case-title">{c.title}</div>
-                  <div className="case-year">{c.year}</div>
-                </div>
-                <div className="case-location">
-                  <Icon name="MapPin" size={14} />
-                  {c.location}
-                </div>
-                <div className="case-metrics">
-                  <div className="case-metric">
-                    <Icon name="Users" size={14} />
-                    {c.result}
+
+          {/* Инвестор */}
+          <div className="investor-block">
+            <div className="investor-label">Предполагаемый инвестор</div>
+            <div className="investor-name">Бренд Билдинг Групп</div>
+            <div className="investor-goals">
+              <div className="investor-goals-title">Ключевые цели инвестора</div>
+              <div className="investor-goals-grid">
+                {[
+                  { icon: "ShieldCheck", text: "Прозрачное и стабильное ценообразование за счёт собственного производства" },
+                  { icon: "Sliders", text: "Управление объёмами выпуска напитков в алюминиевой банке" },
+                  { icon: "TrendingDown", text: "Оптимизация себестоимости продукции" },
+                  { icon: "Truck", text: "Единый центр отгрузки напитков в торговые сети" },
+                  { icon: "DollarSign", text: "Доход от контрактного производства и ответственного хранения" },
+                ].map((g, i) => (
+                  <div className="investor-goal" key={i}>
+                    <div className="investor-goal-icon">
+                      <Icon name={g.icon as IconName} size={16} />
+                    </div>
+                    <div className="investor-goal-text">{g.text}</div>
                   </div>
-                  <div className="case-metric highlight">
-                    <Icon name="TrendingUp" size={14} />
-                    {c.roi}
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -368,7 +381,7 @@ export default function Index() {
       <section id="advantages" className="content-section">
         <div className="section-inner">
           <div className="section-label">Преимущества</div>
-          <h2 className="section-title">Почему этот проект</h2>
+          <h2 className="section-title">Конкурентные преимущества</h2>
           <div className="adv-grid">
             {advantages.map((a, i) => (
               <div className="adv-card" key={i}>
@@ -392,11 +405,11 @@ export default function Index() {
           <div className="contact-layout">
             <div className="contact-info">
               {[
-                { icon: "Building2", label: "Компания", val: "ООО «ИндустриПарк Девелопмент»" },
-                { icon: "User", label: "Контактное лицо", val: "Иванов Александр Сергеевич" },
-                { icon: "Phone", label: "Телефон", val: "+7 (495) 000-00-00" },
-                { icon: "Mail", label: "Email", val: "invest@industripark.ru" },
-                { icon: "MapPin", label: "Адрес офиса", val: "Москва, Пресненская наб., 8, стр. 1" },
+                { icon: "Building2", label: "Объект", val: "Индустриальный парк «Бородино»" },
+                { icon: "MapPin", label: "Адрес", val: "Смоленская обл., г. Вязьма, д. Бородино, трасса М1" },
+                { icon: "Phone", label: "Телефон", val: "+7 (___) ___-__-__" },
+                { icon: "Mail", label: "Email", val: "info@borodino-park.ru" },
+                { icon: "Calendar", label: "Период реализации", val: "2026 – 2031 г." },
               ].map((c, i) => (
                 <div className="contact-row" key={i}>
                   <div className="contact-icon">
@@ -410,10 +423,11 @@ export default function Index() {
               ))}
             </div>
             <div className="contact-form">
-              <div className="form-title">Запросить материалы</div>
+              <div className="form-title">Запросить презентацию</div>
               <input className="form-input" placeholder="Ваше имя" />
+              <input className="form-input" placeholder="Компания" />
               <input className="form-input" placeholder="Email или телефон" />
-              <textarea className="form-textarea" placeholder="Комментарий (необязательно)" rows={3} />
+              <textarea className="form-textarea" placeholder="Вопрос или комментарий" rows={3} />
               <button className="btn-primary full">
                 Отправить запрос
                 <Icon name="Send" size={16} />
@@ -429,7 +443,7 @@ export default function Index() {
         <div className="footer-inner">
           <div className="footer-logo">
             <span className="logo-mark small">ИП</span>
-            <span>ИндустриПарк · 2025</span>
+            <span>Индустриальный парк «Бородино» · 2026–2031</span>
           </div>
           <div className="footer-note">Инвестиционная презентация носит информационный характер</div>
         </div>

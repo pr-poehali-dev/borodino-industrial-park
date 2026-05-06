@@ -1040,3 +1040,149 @@
   color: rgba(255, 255, 255, 0.25);
   font-size: 12px;
 }
+
+/* ── FLAGSHIP ─────────────────────────────────── */
+.flagship-card {
+  background: linear-gradient(
+    135deg,
+    rgba(201, 168, 76, 0.08) 0%,
+    rgba(201, 168, 76, 0.03) 100%
+  );
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.flagship-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--c-gold), var(--c-gold-light));
+}
+.flagship-badge {
+  display: inline-block;
+  background: var(--c-gold);
+  color: var(--c-dark);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+.flagship-content {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.flagship-emoji {
+  font-size: 4rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.flagship-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+}
+.flagship-desc {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+.flagship-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.tag {
+  background: rgba(201, 168, 76, 0.12);
+  color: #7a6020;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.prod-subtitle {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 1.25rem;
+}
+@media (max-width: 600px) {
+  .flagship-content {
+    flex-direction: column;
+  }
+  .flagship-emoji {
+    font-size: 3rem;
+  }
+}
+
+/* ── INVESTOR BLOCK ───────────────────────────── */
+.investor-block {
+  margin-top: 3rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-radius: 16px;
+  padding: 2.5rem;
+}
+.investor-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.5rem;
+}
+.investor-name {
+  font-family: "Oswald", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--c-gold);
+  margin-bottom: 2rem;
+}
+.investor-goals-title {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+}
+.investor-goals-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.investor-goal {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.investor-goal-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(201, 168, 76, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gold);
+  flex-shrink: 0;
+}
+.investor-goal-text {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 6px;
+}
