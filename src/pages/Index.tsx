@@ -202,13 +202,10 @@ export default function Index() {
         <div className="hero-content">
           <div className="hero-badge">Индустриальный парк «Бородино»</div>
           <h1 className="hero-title">
-            Рынок больше не про
+            Пока другие ждут свободные окна на контрактных площадках —
             <br />
-            <span className="hero-accent">«сделать хороший напиток».</span>
+            <span className="hero-accent">вы закрываете спрос и забираете рынок.</span>
           </h1>
-          <p className="hero-offer">
-            Рынок — про способность быстро масштабироваться.
-          </p>
           <div className="hero-asset-block">
             <div className="hero-asset-lead">
               Именно поэтому строительство собственного современного завода сегодня — <strong>не расход.</strong><br />
