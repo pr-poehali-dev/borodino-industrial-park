@@ -410,8 +410,7 @@ export default function Index() {
       {/* MARKET PAINS */}
       <section id="market-pains" className="content-section dark-section">
         <div className="section-inner">
-          <div className="section-label light">Боли рынка</div>
-          <h2 className="section-title light">Что мешает beverage-компаниям расти</h2>
+          <h2 className="section-title light">За счёт чего мы предлагаем достичь</h2>
           <p className="pains-intro">
             Мы создаём не просто завод — мы закрываем системные боли производителей напитков.<br />
             Каждое решение в проекте «Бородино» спроектировано под реальные задачи бизнеса.
