@@ -311,6 +311,70 @@ export default function Index() {
             </div>
           </div>
 
+          {/* Реализация под ключ */}
+          <div className="turnkey-block">
+            <div className="turnkey-label">Наше преимущество</div>
+            <h3 className="turnkey-title">Реализуем проект полностью своими силами</h3>
+            <p className="turnkey-text">
+              У нас есть собственная строительная группа — мы не зависим от подрядчиков и контролируем каждый этап. От покупки земли до запуска производства — всё в одних руках.
+            </p>
+            <div className="turnkey-steps">
+              {[
+                { icon: "MapPin", step: "01", title: "Покупка земли", desc: "Выбор и оформление участка" },
+                { icon: "HardHat", step: "02", title: "Строительство", desc: "Собственная строительная группа" },
+                { icon: "Settings", step: "03", title: "Монтаж оборудования", desc: "Технологическая линия под ключ" },
+                { icon: "Play", step: "04", title: "Запуск производства", desc: "Выход на проектную мощность" },
+                { icon: "Users", step: "05", title: "Подбор персонала", desc: "Комплектация команды" },
+                { icon: "BarChart2", step: "06", title: "Управление", desc: "Операционное управление парком" },
+              ].map((s, i) => (
+                <div className="turnkey-step" key={i}>
+                  <div className="turnkey-step-num">{s.step}</div>
+                  <div className="turnkey-step-icon">
+                    <Icon name={s.icon as IconName} size={20} />
+                  </div>
+                  <div className="turnkey-step-title">{s.title}</div>
+                  <div className="turnkey-step-desc">{s.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Действующие контракты */}
+          <div className="contracts-block">
+            <div className="contracts-label">Подтверждённые партнёрства</div>
+            <h3 className="contracts-title">Действующие контракты уже сегодня</h3>
+            <div className="contracts-grid">
+              <div className="contracts-col">
+                <div className="contracts-col-title">
+                  <Icon name="FileCheck" size={18} />
+                  Владельцы брендов напитков
+                </div>
+                <div className="contracts-col-text">
+                  Заключены контракты с владельцами брендов безалкогольных напитков на размещение производства и контрактный розлив. Очередь резидентов формируется до открытия парка.
+                </div>
+                <div className="contracts-badge">Контракты подписаны</div>
+              </div>
+              <div className="contracts-divider" />
+              <div className="contracts-col">
+                <div className="contracts-col-title">
+                  <Icon name="Package" size={18} />
+                  Поставщики алюминиевой банки
+                </div>
+                <div className="contracts-partners">
+                  {[
+                    { name: "Арнест", desc: "Ведущий российский производитель алюминиевой упаковки" },
+                    { name: "Кэнпак", desc: "Международный производитель алюминиевых банок, присутствие в России" },
+                  ].map((p, i) => (
+                    <div className="contracts-partner" key={i}>
+                      <div className="contracts-partner-name">{p.name}</div>
+                      <div className="contracts-partner-desc">{p.desc}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Инфраструктура */}
           <div className="infra-grid" style={{ marginTop: "3rem" }}>
             {[
