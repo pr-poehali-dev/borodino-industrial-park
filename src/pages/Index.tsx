@@ -155,8 +155,8 @@ export default function Index() {
         <div className="section-inner">
           <div className="section-label">Проблема рынка</div>
           <h2 className="section-title">
-            Каждый сезон бренды теряют миллионы —<br />
-            <span style={{ color: "#0071e3" }}>не потому что нет спроса</span>
+            Каждый сезон бренды теряют миллионы не потому, что нет спроса —<br />
+            <span style={{ color: "#0071e3" }}>а потому что они физически не могут произвести нужный объём вовремя.</span>
           </h2>
 
           <div className="problem-layout">
