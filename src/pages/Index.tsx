@@ -3,7 +3,7 @@ import Icon from "@/components/ui/icon";
 type IconName = string;
 
 const HERO_IMAGE =
-  "https://cdn.poehali.dev/projects/49f7a74d-a29e-4df6-a9ab-7c61c90787d1/files/13838bc5-843a-433a-8d32-b610bbfa498f.jpg";
+  "https://cdn.poehali.dev/projects/49f7a74d-a29e-4df6-a9ab-7c61c90787d1/files/7272139e-2fbe-4c53-9296-05b274ffd4d6.jpg";
 
 function useCounter(target: number, duration = 2000, start = false) {
   const [count, setCount] = useState(0);
@@ -200,12 +200,15 @@ export default function Index() {
         <div className="hero-overlay" />
         <div className="hero-grid-lines" />
         <div className="hero-content">
-          <div className="hero-badge">Инвестиционная презентация · 2026–2031</div>
+          <div className="hero-badge">Индустриальный парк «Бородино» · 2026–2031</div>
           <h1 className="hero-title">
-            Индустриальный парк
+            Рынок больше не про
             <br />
-            <span className="hero-accent">«Бородино»</span>
+            <span className="hero-accent">«сделать хороший напиток».</span>
           </h1>
+          <p className="hero-offer">
+            Рынок — про способность быстро масштабироваться.
+          </p>
           <p className="hero-subtitle">
             Строительство индустриальной площадки на 7 Га с готовой инфраструктурой<br />
             для размещения производств и складских мощностей · г. Вязьма, трасса М1
