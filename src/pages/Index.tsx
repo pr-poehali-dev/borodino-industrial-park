@@ -357,23 +357,7 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="prod-subtitle">Дополнительные производства</div>
-          <div className="prod-grid">
-            {[
-              { emoji: "🍹", title: "Производство соков", desc: "Натуральные и восстановленные соки, нектары, морсы" },
-              { emoji: "🍼", title: "Детское питание", desc: "Специализированное питание с соблюдением стандартов качества" },
-              { emoji: "🍫", title: "Кондитерские изделия", desc: "Батончики, снэки, здоровое питание — растущий сегмент рынка" },
-              { emoji: "📦", title: "Производство упаковки", desc: "Стрейч, полиэтилен, термоусадочные плёнки для нужд производств парка" },
-              { emoji: "🏪", title: "Складской комплекс", desc: "Ответственное хранение, услуги фулфилмента для партнёров" },
-              { emoji: "🔧", title: "Сервисные услуги", desc: "Техническое обслуживание, аренда производственных мощностей" },
-            ].map((item, i) => (
-              <div className="prod-card" key={i}>
-                <div className="prod-emoji">{item.emoji}</div>
-                <div className="prod-title">{item.title}</div>
-                <div className="prod-desc">{item.desc}</div>
-              </div>
-            ))}
-          </div>
+
         </div>
       </section>
 
