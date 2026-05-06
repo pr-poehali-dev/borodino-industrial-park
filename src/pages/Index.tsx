@@ -225,92 +225,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* MARKET PAINS */}
-      <section id="market-pains" className="content-section dark-section">
-        <div className="section-inner">
-          <h2 className="section-title light pains-hero-title">
-            Каждый сезон бренды теряют миллионы не потому, что нет спроса —<br />
-            <span className="pains-hero-accent">а потому что они физически не могут произвести нужный объём вовремя.</span>
-          </h2>
-          <div className="pains-narrative">
-            <p className="pains-narrative-lead">
-              С апреля по сентябрь рынок перегревается: energy drinks, cold drinks, функциональные напитки показывают пиковый рост, а старые производственные линии перестают справляться.
-            </p>
-            <div className="pains-consequences">
-              <div className="pains-consequences-title">Что происходит в этот момент:</div>
-              <div className="pains-consequences-list">
-                {[
-                  { icon: "Clock", text: "производство уходит в overtime" },
-                  { icon: "TruckOff", text: "срываются поставки" },
-                  { icon: "AlertCircle", text: "сети вводят штрафы" },
-                  { icon: "ShoppingCart", text: "бренд теряет полку" },
-                  { icon: "PackageX", text: "SKU исчезают в самый прибыльный период года" },
-                ].map((c, i) => (
-                  <div className="pains-consequence-item" key={i}>
-                    <Icon name={c.icon as IconName} size={16} />
-                    <span>{c.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="pains-danger">
-              <span className="pains-danger-label">И самое опасное —</span>
-              в этот момент ваш клиент покупает продукт конкурента.
-            </div>
-            <div className="pains-conclusion">
-              Рынок больше не про «сделать хороший напиток».<br />
-              <strong>Рынок — про способность быстро масштабироваться.</strong>
-            </div>
-          </div>
-
-          <div className="pains-grid">
-            {marketPains.map((pain, i) => (
-              <div className="pain-card" key={i}>
-                <div className="pain-header">
-                  <div className="pain-icon">
-                    <Icon name={pain.icon as IconName} size={22} />
-                  </div>
-                  <div className="pain-peak">{pain.peak}</div>
-                </div>
-                <div className="pain-title">{pain.title}</div>
-                <div className="pain-problem">
-                  <div className="pain-problem-label">Проблема</div>
-                  <div className="pain-problem-text">{pain.problem}</div>
-                </div>
-                <div className="pain-solution">
-                  <div className="pain-solution-label">
-                    <Icon name="CheckCircle" size={13} />
-                    Наше решение
-                  </div>
-                  <div className="pain-solution-text">{pain.solution}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="sells-block">
-            <div className="sells-title">Что реально продаёт современный завод</div>
-            <div className="sells-grid">
-              {[
-                { icon: "TrendingDown", label: "Снижение cost per liter" },
-                { icon: "Truck", label: "Стабильность поставок" },
-                { icon: "Maximize2", label: "Масштабируемость" },
-                { icon: "Shuffle", label: "Скорость вывода SKU" },
-                { icon: "Shield", label: "Устойчивость к санкциям" },
-                { icon: "Cpu", label: "Автоматизация" },
-                { icon: "BarChart2", label: "Защита маржи" },
-                { icon: "Clock", label: "Uptime и OEE" },
-              ].map((s, i) => (
-                <div className="sells-item" key={i}>
-                  <Icon name={s.icon as IconName} size={20} />
-                  <span>{s.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* BLOCK 3 — CONTROL */}
       <section className="content-section control-section">
         <div className="section-inner">
@@ -576,6 +490,90 @@ export default function Index() {
         </div>
       </section>
 
+      {/* MARKET PAINS */}
+      <section id="market-pains" className="content-section dark-section">
+        <div className="section-inner">
+          <h2 className="section-title light pains-hero-title">
+            Каждый сезон бренды теряют миллионы не потому, что нет спроса —<br />
+            <span className="pains-hero-accent">а потому что они физически не могут произвести нужный объём вовремя.</span>
+          </h2>
+          <div className="pains-narrative">
+            <p className="pains-narrative-lead">
+              С апреля по сентябрь рынок перегревается: energy drinks, cold drinks, функциональные напитки показывают пиковый рост, а старые производственные линии перестают справляться.
+            </p>
+            <div className="pains-consequences">
+              <div className="pains-consequences-title">Что происходит в этот момент:</div>
+              <div className="pains-consequences-list">
+                {[
+                  { icon: "Clock", text: "производство уходит в overtime" },
+                  { icon: "TruckOff", text: "срываются поставки" },
+                  { icon: "AlertCircle", text: "сети вводят штрафы" },
+                  { icon: "ShoppingCart", text: "бренд теряет полку" },
+                  { icon: "PackageX", text: "SKU исчезают в самый прибыльный период года" },
+                ].map((c, i) => (
+                  <div className="pains-consequence-item" key={i}>
+                    <Icon name={c.icon as IconName} size={16} />
+                    <span>{c.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="pains-danger">
+              <span className="pains-danger-label">И самое опасное —</span>
+              в этот момент ваш клиент покупает продукт конкурента.
+            </div>
+            <div className="pains-conclusion">
+              Рынок больше не про «сделать хороший напиток».<br />
+              <strong>Рынок — про способность быстро масштабироваться.</strong>
+            </div>
+          </div>
+          <div className="pains-grid">
+            {marketPains.map((pain, i) => (
+              <div className="pain-card" key={i}>
+                <div className="pain-header">
+                  <div className="pain-icon">
+                    <Icon name={pain.icon as IconName} size={22} />
+                  </div>
+                  <div className="pain-peak">{pain.peak}</div>
+                </div>
+                <div className="pain-title">{pain.title}</div>
+                <div className="pain-problem">
+                  <div className="pain-problem-label">Проблема</div>
+                  <div className="pain-problem-text">{pain.problem}</div>
+                </div>
+                <div className="pain-solution">
+                  <div className="pain-solution-label">
+                    <Icon name="CheckCircle" size={13} />
+                    Наше решение
+                  </div>
+                  <div className="pain-solution-text">{pain.solution}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="sells-block">
+            <div className="sells-title">Что реально продаёт современный завод</div>
+            <div className="sells-grid">
+              {[
+                { icon: "TrendingDown", label: "Снижение cost per liter" },
+                { icon: "Truck", label: "Стабильность поставок" },
+                { icon: "Maximize2", label: "Масштабируемость" },
+                { icon: "Shuffle", label: "Скорость вывода SKU" },
+                { icon: "Shield", label: "Устойчивость к санкциям" },
+                { icon: "Cpu", label: "Автоматизация" },
+                { icon: "BarChart2", label: "Защита маржи" },
+                { icon: "Clock", label: "Uptime и OEE" },
+              ].map((s, i) => (
+                <div className="sells-item" key={i}>
+                  <Icon name={s.icon as IconName} size={20} />
+                  <span>{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* INVESTMENT */}
       <section id="investment" className="content-section gold-section">
         <div className="section-inner">
@@ -616,30 +614,7 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Инвестор */}
-          <div className="investor-block">
-            <div className="investor-label">Предполагаемый инвестор</div>
-            <div className="investor-name">Бренд Билдинг Групп</div>
-            <div className="investor-goals">
-              <div className="investor-goals-title">Ключевые цели инвестора</div>
-              <div className="investor-goals-grid">
-                {[
-                  { icon: "ShieldCheck", text: "Прозрачное и стабильное ценообразование за счёт собственного производства" },
-                  { icon: "Sliders", text: "Управление объёмами выпуска напитков в алюминиевой банке" },
-                  { icon: "TrendingDown", text: "Оптимизация себестоимости продукции" },
-                  { icon: "Truck", text: "Единый центр отгрузки напитков в торговые сети" },
-                  { icon: "DollarSign", text: "Доход от контрактного производства и ответственного хранения" },
-                ].map((g, i) => (
-                  <div className="investor-goal" key={i}>
-                    <div className="investor-goal-icon">
-                      <Icon name={g.icon as IconName} size={16} />
-                    </div>
-                    <div className="investor-goal-text">{g.text}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+
         </div>
       </section>
 
