@@ -76,7 +76,7 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
       </section>
 
       {/* ── 3. РЕШЕНИЕ ──────────────────────────── */}
-      <section id="solution" className="content-section">
+      <section id="solution" className="content-section dark-section">
         <div className="section-inner">
           <div className="section-label">Решение</div>
           <h2 className="section-title">Собственная инфраструктура — стратегический актив</h2>
