@@ -854,6 +854,16 @@
 .solution-side.positive .solution-side-text {
   color: rgba(245, 245, 247, 0.85);
 }
+.solution-side-text--hero {
+  font-size: clamp(1.25rem, 2.5vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #f5f5f7 30%, #2997ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .solution-arrow {
   display: flex;
   align-items: center;

@@ -93,7 +93,7 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
             </div>
             <div className="solution-side positive">
               <div className="solution-side-label">С собственным заводом</div>
-              <div className="solution-side-text">
+              <div className="solution-side-text solution-side-text--hero">
                 Вы управляете экономикой бренда.<br />Себестоимость прозрачна и предсказуема.<br />Масштаб — ваше решение.
               </div>
             </div>
