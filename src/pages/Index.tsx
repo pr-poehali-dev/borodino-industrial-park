@@ -200,7 +200,7 @@ export default function Index() {
         <div className="hero-overlay" />
         <div className="hero-grid-lines" />
         <div className="hero-content">
-          <div className="hero-badge">Индустриальный парк «Бородино» · 2026–2031</div>
+          <div className="hero-badge">Индустриальный парк «Бородино»</div>
           <h1 className="hero-title">
             Рынок больше не про
             <br />
@@ -209,6 +209,19 @@ export default function Index() {
           <p className="hero-offer">
             Рынок — про способность быстро масштабироваться.
           </p>
+          <div className="hero-asset-block">
+            <div className="hero-asset-lead">
+              Именно поэтому строительство собственного современного завода сегодня — <strong>не расход.</strong><br />
+              Это стратегический актив, который:
+            </div>
+            <ul className="hero-asset-list">
+              <li>защищает бренд от дефицита мощностей</li>
+              <li>позволяет расти без ограничений</li>
+              <li>увеличивает маржинальность</li>
+              <li>даёт контроль над качеством и сроками</li>
+              <li>позволяет запускать новые SKU без зависимости от подрядчиков</li>
+            </ul>
+          </div>
           <p className="hero-subtitle">
             Строительство индустриальной площадки на 7 Га с готовой инфраструктурой<br />
             для размещения производств и складских мощностей · г. Вязьма, трасса М1
