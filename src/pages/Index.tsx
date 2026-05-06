@@ -357,6 +357,52 @@ export default function Index() {
             </div>
           </div>
 
+          {/* Страсти */}
+          <div className="passions-block">
+            <div className="passions-label">Главные страсти резидентов</div>
+            <div className="passions-subtitle">Драйверы и амбиции beverage-компаний</div>
+            <div className="passions-grid">
+              {[
+                {
+                  num: "01",
+                  emoji: "🏆",
+                  title: "Стать новым локальным лидером",
+                  desc: "После ослабления международных брендов открылось окно возможностей. Это сильнейшая мотивация рынка — занять освободившееся место.",
+                },
+                {
+                  num: "02",
+                  emoji: "🎵",
+                  title: "Построить культовый молодёжный бренд",
+                  desc: "Не просто продавать напиток — создать lifestyle. Музыка, gaming, street culture, спорт, digital community.",
+                },
+                {
+                  num: "03",
+                  emoji: "🛒",
+                  title: "Быстрое масштабирование через сети",
+                  desc: "Зайти в X5, Магнит, Красное & Белое, ВкусВилл, федеральные АЗС и маркетплейсы — значит стать настоящим брендом.",
+                },
+                {
+                  num: "04",
+                  emoji: "⚡",
+                  title: "Захват тренда functional drinks",
+                  desc: "No sugar, витамины, адаптогены, caffeine+focus, wellness. Компании хотят быть не газировкой, а функциональным продуктом.",
+                },
+                {
+                  num: "05",
+                  emoji: "🌍",
+                  title: "Создать экспортный бренд",
+                  desc: "Амбиция выйти на рынки СНГ, Ближнего Востока и Азии. Собственное производство — ключевое условие для экспортной экспансии.",
+                },
+              ].map((p, i) => (
+                <div className="passion-card" key={i}>
+                  <div className="passion-num">{p.num}</div>
+                  <div className="passion-emoji">{p.emoji}</div>
+                  <div className="passion-title">{p.title}</div>
+                  <div className="passion-desc">{p.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
 
         </div>
       </section>
