@@ -59,71 +59,7 @@ const navItems = [
   { id: "contacts", label: "Контакты" },
 ];
 
-const marketPains = [
-  {
-    icon: "Gauge",
-    title: "Нехватка мощностей в сезон",
-    peak: "Апрель – Сентябрь",
-    problem: "Старые линии не справляются с пиковым спросом: срываются поставки, штрафы сетей, потеря полки, дефицит SKU.",
-    solution: "Высокоскоростные линии с быстрым переналадом — масштабирование без остановок.",
-  },
-  {
-    icon: "Package",
-    title: "Высокая стоимость хранения банки",
-    peak: "Логистика",
-    problem: "Пустая банка занимает огромный объём, требует больших складов и чувствительна к повреждениям.",
-    solution: "Автоматический склад (AS/RS), оптимальный внутренний flow, минимизация перемещений.",
-  },
-  {
-    icon: "AlertTriangle",
-    title: "Потери на браке и простоях",
-    peak: "Каждая минута = деньги",
-    problem: "Деформация банки, утечки, проблемы seam quality, остановки filler/capper — прямые потери и недопоставки.",
-    solution: "Современное оборудование с predictive maintenance и онлайн-контролем качества.",
-  },
-  {
-    icon: "Shuffle",
-    title: "Сложность запуска новых SKU",
-    peak: "Гибкость производства",
-    problem: "Старые заводы плохо подходят под частые переналадки, маленькие партии и коллаборации.",
-    solution: "Flexible manufacturing: быстрый changeover, модульные линии, digital recipe management.",
-  },
-  {
-    icon: "Zap",
-    title: "Энергозатраты",
-    peak: "Маржа под давлением",
-    problem: "Охлаждение, компрессоры, пастеризация, CIP, HVAC — тарифы растут, маржа падает.",
-    solution: "Снижение kWh/литр, рекуперация тепла, энергоэффективный cold chain.",
-  },
-  {
-    icon: "Shield",
-    title: "Зависимость от импортного оборудования",
-    peak: "После санкций",
-    problem: "Отсутствие запчастей, долгий сервис, простой линии, невозможность модернизации.",
-    solution: "Локальный сервис, доступность компонентов, modular upgrade.",
-  },
-  {
-    icon: "Users",
-    title: "Нехватка персонала",
-    peak: "Кадровый дефицит",
-    problem: "Технологов, инженеров, automation staff и maintenance teams катастрофически не хватает.",
-    solution: "Максимальная автоматизация: MES/SCADA, remote diagnostics, predictive maintenance.",
-  },
-  {
-    icon: "Droplets",
-    title: "Проблемы с качеством воды",
-    peak: "Вода = продукт",
-    problem: "Нестабильное качество, дорогая водоподготовка, риски контаминации.",
-    solution: "Многоступенчатая фильтрация, онлайн-контроль качества, резервирование.",
-  },
-  {
-    icon: "BarChart2",
-    title: "Низкий OEE старых производств",
-    peak: "Устаревшая база",
-    problem: "Низкая скорость линий, частые простои, ручные операции — завод морально устарел.",
-    solution: "«Умный завод»: realtime analytics, OEE dashboards, digital twin, автоконтроль потерь.",
-  },
-];
+
 
 const advantages = [
   { icon: "Zap", title: "Собственное производство", desc: "Прозрачное и стабильное ценообразование за счёт полного контроля над производственным процессом" },
@@ -629,30 +565,7 @@ export default function Index() {
               <strong>Рынок — про способность быстро масштабироваться.</strong>
             </div>
           </div>
-          <div className="pains-grid">
-            {marketPains.map((pain, i) => (
-              <div className="pain-card" key={i}>
-                <div className="pain-header">
-                  <div className="pain-icon">
-                    <Icon name={pain.icon as IconName} size={22} />
-                  </div>
-                  <div className="pain-peak">{pain.peak}</div>
-                </div>
-                <div className="pain-title">{pain.title}</div>
-                <div className="pain-problem">
-                  <div className="pain-problem-label">Проблема</div>
-                  <div className="pain-problem-text">{pain.problem}</div>
-                </div>
-                <div className="pain-solution">
-                  <div className="pain-solution-label">
-                    <Icon name="CheckCircle" size={13} />
-                    Наше решение
-                  </div>
-                  <div className="pain-solution-text">{pain.solution}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+
           <div className="sells-block">
             <div className="sells-title">Что реально продаёт современный завод</div>
             <div className="sells-grid">
