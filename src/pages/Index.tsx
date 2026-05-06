@@ -5,7 +5,6 @@ import ProblemSolution from "@/components/sections/ProblemSolution";
 import AdvantagesSection from "@/components/sections/AdvantagesSection";
 import ProjectSection from "@/components/sections/ProjectSection";
 import InvestmentContacts from "@/components/sections/InvestmentContacts";
-import CinematicSection from "@/components/sections/CinematicSection";
 import { useReveal } from "@/hooks/useReveal";
 
 const navItems = [
@@ -74,7 +73,6 @@ export default function Index() {
       <HeroSection scrollTo={scrollTo} />
       <ProblemSolution scrollTo={scrollTo} />
       <AdvantagesSection />
-      <CinematicSection />
       <ProjectSection />
       <InvestmentContacts />
 
