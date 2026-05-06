@@ -14,7 +14,7 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
           <div className="section-label reveal">Проблема рынка</div>
           <h2 className="section-title reveal reveal-delay-1">
             Бренды теряют миллионы —<br />
-            <span style={{ color: "#2997ff" }}>не из-за спроса, а из-за мощностей.</span>
+            <span style={{ color: "#2997ff" }}>не из-за спроса, а из-за отсутствия свободных мощностей.</span>
           </h2>
 
           <div className="problem-layout">
