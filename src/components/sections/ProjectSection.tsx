@@ -24,6 +24,32 @@ export default function ProjectSection() {
           </div>
         </div>
 
+        {/* Визуализация зданий */}
+        <div className="building-gallery">
+          <div className="building-gallery-label">
+            <Icon name="Building2" size={14} />
+            3D-визуализация объектов
+          </div>
+          <div className="building-gallery-grid">
+            <div className="building-gallery-item">
+              <img
+                src="https://cdn.poehali.dev/projects/49f7a74d-a29e-4df6-a9ab-7c61c90787d1/bucket/30d64c4e-4fb7-414d-b9e0-18633d87b8bb.png"
+                alt="Вид сверху на корпуса индустриального парка"
+                className="building-gallery-img"
+              />
+              <div className="building-gallery-caption">Вид сверху · производственные корпуса</div>
+            </div>
+            <div className="building-gallery-item">
+              <img
+                src="https://cdn.poehali.dev/projects/49f7a74d-a29e-4df6-a9ab-7c61c90787d1/bucket/82506be1-dbc3-4b4c-9ebe-1789497c82fb.png"
+                alt="Фасад производственного комплекса с административным блоком"
+                className="building-gallery-img"
+              />
+              <div className="building-gallery-caption">Главный фасад · производственный комплекс и КПП</div>
+            </div>
+          </div>
+        </div>
+
         {/* География */}
         <div className="project-geo">
           <div className="project-geo-map">
