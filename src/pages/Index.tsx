@@ -410,11 +410,11 @@ export default function Index() {
       {/* MARKET PAINS */}
       <section id="market-pains" className="content-section dark-section">
         <div className="section-inner">
-          <h2 className="section-title light">За счёт чего мы предлагаем достичь</h2>
-          <p className="pains-intro">
-            Мы создаём не просто завод — мы закрываем системные боли производителей напитков.<br />
-            Каждое решение в проекте «Бородино» спроектировано под реальные задачи бизнеса.
-          </p>
+          <div className="section-label light">За счёт чего мы предлагаем достичь</div>
+          <h2 className="section-title light pains-hero-title">
+            Мы создаём не просто завод — мы закрываем системные боли производителей напитков.
+            <span className="pains-hero-sub"> Каждое решение в проекте «Бородино» спроектировано под реальные задачи бизнеса.</span>
+          </h2>
 
           <div className="pains-grid">
             {marketPains.map((pain, i) => (

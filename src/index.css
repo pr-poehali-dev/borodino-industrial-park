@@ -1217,6 +1217,23 @@
   }
 }
 
+/* ── PAINS HERO TITLE ─────────────────────────── */
+.pains-hero-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem) !important;
+  line-height: 1.25 !important;
+  margin-bottom: 3rem !important;
+  max-width: 860px;
+}
+.pains-hero-sub {
+  display: block;
+  font-size: 0.6em;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 0.75rem;
+  font-family: "IBM Plex Sans", sans-serif;
+  line-height: 1.6;
+}
+
 /* ── INVESTOR BLOCK ───────────────────────────── */
 .investor-block {
   margin-top: 3rem;
