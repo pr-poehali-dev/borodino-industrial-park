@@ -17,54 +17,29 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
             <span style={{ color: "#2997ff" }}>не из-за спроса, а из-за отсутствия свободных мощностей.</span>
           </h2>
 
-          <div className="problem-layout">
-            <div className="problem-main">
-              <p className="problem-lead">
-                С апреля по сентябрь рынок перегревается: energy drinks, cold drinks, функциональные напитки показывают пиковый рост, а старые производственные линии перестают справляться.
-              </p>
-              <div className="problem-cards">
-                {[
-                  { icon: "Clock",        text: "Производство уходит в overtime" },
-                  { icon: "AlertCircle",  text: "Срываются поставки в сети" },
-                  { icon: "Ban",          text: "Сети вводят штрафы за недопоставку" },
-                  { icon: "ShoppingCart", text: "Бренд теряет полку в пиковый сезон" },
-                  { icon: "PackageX",     text: "SKU исчезают в самый прибыльный период" },
-                ].map((item, i) => (
-                  <div className="problem-card" key={i}>
-                    <div className="problem-card-icon">
-                      <Icon name={item.icon as IconName} size={20} />
-                    </div>
-                    <span className="problem-card-text">{item.text}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="problem-danger problem-danger--highlight">
-                <div className="problem-danger-icon">⚠️</div>
-                <div>
-                  <strong>И самое опасное:</strong> в этот момент ваш клиент покупает продукт конкурента.
+          <p className="problem-lead">
+            С апреля по сентябрь рынок перегревается: energy drinks, cold drinks, функциональные напитки показывают пиковый рост, а старые производственные линии перестают справляться.
+          </p>
+          <div className="problem-cards">
+            {[
+              { icon: "Clock",        text: "Производство уходит в overtime" },
+              { icon: "AlertCircle",  text: "Срываются поставки в сети" },
+              { icon: "Ban",          text: "Сети вводят штрафы за недопоставку" },
+              { icon: "ShoppingCart", text: "Бренд теряет полку в пиковый сезон" },
+              { icon: "PackageX",     text: "SKU исчезают в самый прибыльный период" },
+            ].map((item, i) => (
+              <div className="problem-card" key={i}>
+                <div className="problem-card-icon">
+                  <Icon name={item.icon as IconName} size={20} />
                 </div>
+                <span className="problem-card-text">{item.text}</span>
               </div>
-            </div>
-
-            <div className="problem-cost">
-              <div className="problem-cost-title">Непредсказуемая себестоимость</div>
-              <p className="problem-cost-text">
-                Вторая системная боль — отсутствие контроля над экономикой бренда.
-              </p>
-              {[
-                "Цена банки растёт",
-                "Сырьё дорожает каждый месяц",
-                "Логистика дорожает",
-                "Подрядчики меняют условия в сезон",
-              ].map((t, i) => (
-                <div className="problem-cost-item" key={i}>
-                  <span className="problem-cost-dot" />
-                  {t}
-                </div>
-              ))}
-              <div className="problem-cost-result">
-                Когда бренд растёт — хаос в себестоимости растёт вместе с ним.
-              </div>
+            ))}
+          </div>
+          <div className="problem-danger problem-danger--highlight">
+            <div className="problem-danger-icon">⚠️</div>
+            <div>
+              <strong>И самое опасное:</strong> в этот момент ваш клиент покупает продукт конкурента.
             </div>
           </div>
 

@@ -178,25 +178,6 @@ export default function ProjectSection() {
           ))}
         </div>
 
-        {/* Этапы */}
-        <div className="timeline" style={{ marginTop: "3rem" }}>
-          <div className="timeline-title">Этапы реализации</div>
-          <div className="timeline-track">
-            {[
-              { phase: "I этап", period: "2026", desc: "Проектирование, разрешения, подготовка территории", status: "active" },
-              { phase: "II этап", period: "2027–2028", desc: "Строительство инженерных сетей и корпусов", status: "upcoming" },
-              { phase: "III этап", period: "2029–2031", desc: "Монтаж оборудования, запуск, выход на мощность", status: "upcoming" },
-            ].map((item, i) => (
-              <div key={i} className={`timeline-item ${item.status}`}>
-                <div className="timeline-dot" />
-                <div className="timeline-phase">{item.phase}</div>
-                <div className="timeline-period">{item.period}</div>
-                <div className="timeline-desc">{item.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Какого инвестора ищем */}
         <div className="passions-block" style={{ borderTop: "1px solid rgba(0,229,255,0.12)", marginTop: "3rem", paddingTop: "3rem" }}>
           <div className="passions-label">Какого инвестора мы хотим</div>
