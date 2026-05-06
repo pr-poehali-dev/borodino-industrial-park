@@ -20,19 +20,18 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
           <p className="problem-lead">
             С апреля по сентябрь рынок перегревается: energy drinks, cold drinks, функциональные напитки показывают пиковый рост, а старые производственные линии перестают справляться.
           </p>
-          <div className="problem-cards">
+          <div className="problem-list-v2">
             {[
-              { icon: "Clock",        text: "Производство уходит в overtime" },
-              { icon: "AlertCircle",  text: "Срываются поставки в сети" },
-              { icon: "Ban",          text: "Сети вводят штрафы за недопоставку" },
-              { icon: "ShoppingCart", text: "Бренд теряет полку в пиковый сезон" },
-              { icon: "PackageX",     text: "SKU исчезают в самый прибыльный период" },
-            ].map((item, i) => (
-              <div className="problem-card" key={i}>
-                <div className="problem-card-icon">
-                  <Icon name={item.icon as IconName} size={20} />
-                </div>
-                <span className="problem-card-text">{item.text}</span>
+              "Производство уходит в overtime",
+              "Срываются поставки в сети",
+              "Сети вводят штрафы за недопоставку",
+              "Бренд теряет полку в пиковый сезон",
+              "SKU исчезают в самый прибыльный период",
+            ].map((text, i) => (
+              <div className="problem-row" key={i}>
+                <span className="problem-row-num">0{i + 1}</span>
+                <span className="problem-row-text">{text}</span>
+                <Icon name="TrendingDown" size={18} className="problem-row-icon" />
               </div>
             ))}
           </div>
