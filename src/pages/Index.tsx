@@ -153,10 +153,10 @@ export default function Index() {
       {/* ── 2. ПРОБЛЕМА ─────────────────────────── */}
       <section id="problem" className="content-section dark-section">
         <div className="section-inner">
-          <div className="section-label light">Проблема рынка</div>
-          <h2 className="section-title light">
+          <div className="section-label">Проблема рынка</div>
+          <h2 className="section-title">
             Каждый сезон бренды теряют миллионы —<br />
-            <span style={{ color: "var(--c-gold)" }}>не потому что нет спроса</span>
+            <span style={{ color: "#0071e3" }}>не потому что нет спроса</span>
           </h2>
 
           <div className="problem-layout">

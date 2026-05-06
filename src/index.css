@@ -402,7 +402,7 @@
   font-weight: 600;
 }
 .stat-label {
-  color: rgba(245, 245, 247, 0.4);
+  color: rgba(245, 245, 247, 0.65);
   font-size: 12px;
   margin-top: 0.5rem;
 }
@@ -622,7 +622,7 @@
   color: var(--c-text2);
 }
 .solution-side.positive .solution-side-text {
-  color: rgba(245, 245, 247, 0.65);
+  color: rgba(245, 245, 247, 0.85);
 }
 .solution-arrow {
   display: flex;
@@ -751,7 +751,7 @@
   letter-spacing: -0.01em;
 }
 .map-sublabel {
-  color: rgba(245, 245, 247, 0.4);
+  color: rgba(245, 245, 247, 0.65);
   font-size: 13px;
   margin-top: 4px;
 }
@@ -807,7 +807,7 @@
   letter-spacing: -0.02em;
 }
 .turnkey-text {
-  color: rgba(245, 245, 247, 0.5);
+  color: rgba(245, 245, 247, 0.75);
   font-size: 15px;
   line-height: 1.7;
   margin: 0 0 2rem;
@@ -863,7 +863,7 @@
   margin-bottom: 3px;
 }
 .turnkey-step-desc {
-  color: rgba(245, 245, 247, 0.35);
+  color: rgba(245, 245, 247, 0.65);
   font-size: 11px;
   line-height: 1.4;
 }
@@ -1038,7 +1038,7 @@
   letter-spacing: -0.02em;
 }
 .flagship-desc {
-  color: rgba(245, 245, 247, 0.6);
+  color: rgba(245, 245, 247, 0.8);
   font-size: 15px;
   line-height: 1.7;
   margin-bottom: 1.25rem;
@@ -1299,7 +1299,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: rgba(245, 245, 247, 0.5);
+  color: rgba(245, 245, 247, 0.75);
   font-size: 14px;
 }
 .invest-val {
@@ -1333,7 +1333,7 @@
   letter-spacing: -0.02em;
 }
 .metric-label {
-  color: rgba(245, 245, 247, 0.4);
+  color: rgba(245, 245, 247, 0.65);
   font-size: 12px;
 }
 @media (max-width: 768px) {
@@ -1432,7 +1432,7 @@
   color: #2997ff;
 }
 .contact-label {
-  color: rgba(245, 245, 247, 0.35);
+  color: rgba(245, 245, 247, 0.6);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.07em;
