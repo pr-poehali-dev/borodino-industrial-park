@@ -952,7 +952,7 @@
 }
 .ambition-title {
   font-weight: 700;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--c-text);
   line-height: 1.35;
   letter-spacing: -0.01em;
@@ -960,7 +960,7 @@
 }
 .ambition-desc {
   color: var(--c-text2);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.55;
 }
 @media (max-width: 900px) {
@@ -1218,10 +1218,20 @@
   .solution-contrast {
     flex-direction: column;
     gap: 0;
+    background: transparent;
+    border: 1px solid var(--c-border2);
+  }
+  .solution-side.negative {
+    border-right: none;
+    border-bottom: 1px solid var(--c-border2);
   }
   .solution-arrow {
     padding: 1rem;
     transform: rotate(90deg);
+    background: var(--c-bg4);
+    align-self: center;
+    width: 100%;
+    justify-content: center;
   }
   .solution-benefits {
     grid-template-columns: 1fr 1fr;
@@ -2042,6 +2052,11 @@
 @media (max-width: 768px) {
   .adv-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 500px) {
+  .adv-grid {
+    grid-template-columns: 1fr;
   }
 }
 
