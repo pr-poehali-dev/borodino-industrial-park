@@ -94,16 +94,17 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
               { icon: "Zap", title: "Высокоскоростная линия 60 000 банок/час — закрывает пиковый спрос без overtime и штрафов", desc: "" },
               { icon: "Tag", title: "Собственное производство фиксирует цену банки и сырья — маржа под вашим контролем", desc: "" },
               { icon: "Truck", title: "Производство + хранение + поставки в одной системе — никаких разрозненных складов", desc: "" },
-              { icon: "DollarSign", title: "Свободные мощности — контрактный розлив и ответственное хранение для других брендов", desc: "" },
+              { icon: "DollarSign", title: "Свободные мощности — контрактный розлив и ответственное хранение для других брендов", desc: "Дополнительный доход от незадействованных линий", highlight: true },
               { icon: "Shuffle", title: "Быстрый переналад позволяет запускать новые вкусы без зависимости от подрядчиков", desc: "" },
               { icon: "ShieldCheck", title: "Прямые контракты с производителями банки КенПак и Арнест", desc: "" },
             ].map((b, i) => (
-              <div className="solution-card" key={i}>
+              <div className={`solution-card${b.highlight ? " solution-card--highlight" : ""}`} key={i}>
+                {b.highlight && <div className="solution-card-badge">Доп. доход</div>}
                 <div className="solution-card-icon">
                   <Icon name={b.icon as IconName} size={24} />
                 </div>
                 <div className="solution-card-title">{b.title}</div>
-                <div className="solution-card-desc">{b.desc}</div>
+                {b.desc && <div className="solution-card-desc">{b.desc}</div>}
               </div>
             ))}
           </div>

@@ -1165,6 +1165,32 @@
   transform: translateY(-3px);
   box-shadow: 0 8px 32px rgba(45, 107, 196, 0.12);
 }
+.solution-card--highlight {
+  border-color: #2ecc71;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+  position: relative;
+  box-shadow: 0 4px 24px rgba(46, 204, 113, 0.15);
+}
+.solution-card--highlight:hover {
+  border-color: #27ae60;
+  box-shadow: 0 8px 32px rgba(46, 204, 113, 0.25);
+}
+.solution-card--highlight .solution-card-icon {
+  background: #dcfce7;
+  color: #16a34a;
+}
+.solution-card-badge {
+  display: inline-block;
+  background: #2ecc71;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  padding: 3px 9px;
+  margin-bottom: 0.85rem;
+}
 .solution-card-icon {
   width: 44px;
   height: 44px;
