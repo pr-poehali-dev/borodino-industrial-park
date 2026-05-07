@@ -49,7 +49,7 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
       <section id="solution" className="content-section dark-section">
         <div className="section-inner">
           <div className="section-label reveal">Решение</div>
-          <h2 className="section-title reveal reveal-delay-1">Собственная инфраструктура —<br />стратегический актив.</h2>
+          <h2 className="section-title reveal reveal-delay-1">Собственная инфраструктура —<br /><span style={{ color: "#2997ff" }}>стратегический актив.</span></h2>
 
           <div className="solution-contrast">
             <div className="solution-side negative">
