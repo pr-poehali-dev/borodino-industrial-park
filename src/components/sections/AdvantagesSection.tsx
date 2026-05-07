@@ -3,10 +3,10 @@ type IconName = string;
 
 export default function AdvantagesSection() {
   return (
-    <section id="advantages" className="content-section dark-section">
+    <section id="advantages" className="content-section">
       <div className="section-inner">
-        <div className="section-label light reveal">Преимущества</div>
-        <h2 className="section-title light reveal reveal-delay-1">Конкурентные<br />преимущества инвестиции в Бородино.</h2>
+        <div className="section-label reveal">Преимущества</div>
+        <h2 className="section-title reveal reveal-delay-1">Конкурентные<br />преимущества инвестиции в Бородино.</h2>
         <div className="adv-grid">
           {[
             { icon: "Zap", title: "Прозрачное и стабильное ценообразование за счёт полного контроля над производством", desc: "" },

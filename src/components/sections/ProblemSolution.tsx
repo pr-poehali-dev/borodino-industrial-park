@@ -9,7 +9,7 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
   return (
     <>
       {/* ── 2. ПРОБЛЕМА ─────────────────────────── */}
-      <section id="problem" className="content-section dark-section">
+      <section id="problem" className="content-section">
         <div className="section-inner">
           <div className="section-label reveal">Проблема рынка</div>
           <h2 className="section-title reveal reveal-delay-1">
@@ -46,7 +46,7 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
       </section>
 
       {/* ── 3. РЕШЕНИЕ ──────────────────────────── */}
-      <section id="solution" className="content-section dark-section">
+      <section id="solution" className="content-section blue-section">
         <div className="section-inner">
           <div className="section-label reveal">Решение</div>
           <h2 className="section-title reveal reveal-delay-1">Собственная инфраструктура —<br /><span style={{ color: "var(--c-blue-light)" }}>стратегический актив.</span></h2>
