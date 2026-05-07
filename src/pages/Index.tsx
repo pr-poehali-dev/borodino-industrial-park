@@ -46,8 +46,7 @@ export default function Index() {
       <nav className="navbar">
         <div className="navbar-inner">
           <div className="navbar-logo">
-            <span className="logo-mark">ИП</span>
-            <span className="logo-text">Бородино</span>
+            <img src="https://cdn.poehali.dev/projects/49f7a74d-a29e-4df6-a9ab-7c61c90787d1/bucket/481a73a2-4a4c-492d-95a7-fe55bbdbafd7.png" alt="Индустриальный парк Бородино" style={{ height: 44, width: "auto" }} />
           </div>
           <div className="navbar-links">
             {navItems.map((item) => (
