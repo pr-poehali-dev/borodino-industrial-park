@@ -10,7 +10,7 @@ export default function ProjectSection({ lang }: ProjectSectionProps) {
   const T = t[lang].project;
 
   return (
-    <section id="project" className="content-section" style={{ background: "var(--ikea-off)" }}>
+    <section id="project" className="content-section">
       <div className="section-inner">
         <div className="section-label reveal">{T.sectionLabel}</div>
         <h2 className="section-title reveal reveal-delay-1">
