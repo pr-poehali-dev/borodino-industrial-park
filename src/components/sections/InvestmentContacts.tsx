@@ -13,10 +13,10 @@ export default function InvestmentContacts() {
             <div className="invest-main">
               <div className="invest-card featured">
                 <div className="invest-card-label">Общий объём инвестиций</div>
-                <div className="invest-big-num">₽3 млрд</div>
+                <div className="invest-big-num">₽1,5 млрд</div>
                 <div className="invest-details">
                   {[
-                    { label: "Период реализации", val: "2026–2031" },
+                    { label: "Период реализации", val: "1–2 года" },
                     { label: "Площадь застройки", val: "21 000 м²" },
                     { label: "Площадь территории", val: "7 Га" },
                   ].map((r, i) => (
@@ -32,7 +32,7 @@ export default function InvestmentContacts() {
               {[
                 { label: "Рабочих мест", val: "250+", icon: "Users" },
                 { label: "Мощность линии", val: "60 тыс/ч", icon: "Zap" },
-                { label: "Срок реализации", val: "5 лет", icon: "Clock" },
+                { label: "Срок реализации", val: "1–2 года", icon: "Clock" },
                 { label: "Площадь парка", val: "7 Га", icon: "Map" },
               ].map((m, i) => (
                 <div className="metric-card" key={i}>
@@ -58,7 +58,7 @@ export default function InvestmentContacts() {
                 { icon: "MapPin", label: "Адрес", val: "Смоленская обл., г. Вязьма, д. Бородино, трасса М1" },
                 { icon: "Phone", label: "Телефон", val: "+7 (___) ___-__-__" },
                 { icon: "Mail", label: "Email", val: "info@borodino-park.ru" },
-                { icon: "Calendar", label: "Период реализации", val: "2026 – 2031 г." },
+                { icon: "Calendar", label: "Период реализации", val: "1–2 года" },
               ].map((c, i) => (
                 <div className="contact-row" key={i}>
                   <div className="contact-icon"><Icon name={c.icon as IconName} size={18} /></div>
@@ -89,7 +89,7 @@ export default function InvestmentContacts() {
         <div className="footer-inner">
           <div className="footer-logo">
             <span className="logo-mark small">ИП</span>
-            <span>Индустриальный парк «Бородино» · 2026–2031</span>
+            <span>Индустриальный парк «Бородино» · 2026–2027</span>
           </div>
           <div className="footer-note">Инвестиционная презентация носит информационный характер</div>
         </div>

@@ -63,7 +63,7 @@ export default function ProjectSection() {
               { icon: "Navigation", title: "Расположение", text: "Трасса М1, напротив Мелькомбината. 200 км от Москвы — прямой выход на федеральную трассу." },
               { icon: "Truck", title: "Транспорт", text: "Федеральная трасса М1, удобная логистика в Москву, ЦФО и западные регионы." },
               { icon: "Building2", title: "Окружение", text: "Городская инфраструктура г. Вязьмы: жильё, медицина, образование, трудовые ресурсы." },
-              { icon: "Calendar", title: "Сроки", text: "Реализация 2026–2031. I этап — 2026 г.: проектирование и подготовка территории." },
+              { icon: "Calendar", title: "Сроки", text: "Реализация 1–2 года. I этап — 2026 г.: проектирование и подготовка территории." },
             ].map((item, i) => (
               <div className="geo-item" key={i}>
                 <div className="geo-icon-wrap"><Icon name={item.icon as IconName} size={18} /></div>
