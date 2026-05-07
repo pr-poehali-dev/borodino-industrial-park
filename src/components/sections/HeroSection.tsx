@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Icon from "@/components/ui/icon";
 
 const HERO_IMAGE =
-  "https://cdn.poehali.dev/projects/49f7a74d-a29e-4df6-a9ab-7c61c90787d1/files/7272139e-2fbe-4c53-9296-05b274ffd4d6.jpg";
+  "https://cdn.poehali.dev/projects/49f7a74d-a29e-4df6-a9ab-7c61c90787d1/files/c8850be8-0252-4c7a-88e4-c6fc7f0dfccf.jpg";
 
 function useCounter(target: number, duration = 2000, start = false) {
   const [count, setCount] = useState(0);
