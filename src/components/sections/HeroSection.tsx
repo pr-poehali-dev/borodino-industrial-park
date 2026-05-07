@@ -91,8 +91,11 @@ export default function HeroSection({ scrollTo, lang }: HeroSectionProps) {
           <Icon name="ChevronDown" size={24} />
         </div>
 
-        {/* Статистика встроена в hero-слайд */}
-        <div className="hero-stats-inline" ref={statsRef}>
+      </section>
+
+      {/* ── STATS ───────────────────────────────── */}
+      <section className="stats-section" ref={statsRef}>
+        <div className="stats-grid">
           {T.stats.map((s, i) => (
             <StatCard key={i} value={STAT_VALUES[i]} suffix={s.suffix} label={s.label} delay={i * 150} start={statsInView} />
           ))}
