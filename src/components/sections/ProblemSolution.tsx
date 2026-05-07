@@ -18,7 +18,7 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
           </h2>
 
           <p className="problem-lead">
-            С апреля по сентябрь рынок перегревается: energy drinks, cold drinks, функциональные напитки показывают пиковый рост, а старые производственные линии перестают справляться.
+            С апреля по сентябрь рынок перегревается: energy drinks, cold drinks, функциональные напитки показывают пиковый рост, а производственные линии перестают справляться.
           </p>
           <div className="problem-list-v2">
             {[
