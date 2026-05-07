@@ -1087,10 +1087,33 @@
   margin-top: 2.5rem;
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 800;
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
   color: var(--c-text);
+  padding: 1.75rem 2rem;
+  border: 2px solid #ff3b30;
+  border-radius: 18px;
+  background: rgba(255, 59, 48, 0.04);
+  position: relative;
+}
+.problem-danger-headline::before {
+  content: "!";
+  position: absolute;
+  top: -14px;
+  left: 2rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ff3b30;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 28px;
+  text-align: center;
 }
 .problem-danger-prefix {
   color: #ff3b30;
