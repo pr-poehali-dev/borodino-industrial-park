@@ -18,12 +18,12 @@ export default function InvestmentContacts({ lang, slideOnly }: InvestmentContac
 
   return (
     <>
-      {/* ── ИНВЕСТИЦИИ ───────────────────────── */}
+      {/* ── ИНВЕСТИЦИИ ───────────────────────────── */}
       {showInvestment && (
-        <section id="investment" className="content-section gold-section">
+        <section id="investment" className="content-section">
           <div className="section-inner">
-            <div className="section-label light reveal">{Inv.sectionLabel}</div>
-            <h2 className="section-title light reveal reveal-delay-1">
+            <div className="section-label reveal">{Inv.sectionLabel}</div>
+            <h2 className="section-title reveal reveal-delay-1">
               {Inv.title.split("\n").map((line, i, arr) => (
                 <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
               ))}
@@ -57,39 +57,105 @@ export default function InvestmentContacts({ lang, slideOnly }: InvestmentContac
         </section>
       )}
 
-      {/* ── КОНТАКТЫ ─────────────────────────── */}
+      {/* ── КОНТАКТЫ ─────────────────────────────── */}
       {showContacts && (
-        <>
-          <section id="contacts" className="content-section dark-section">
-            <div className="section-inner">
-              <div className="section-label light">{Con.sectionLabel}</div>
-              <h2 className="section-title light">{Con.title}</h2>
-              <div className="contact-layout">
-                <div className="contact-info">
-                  {Con.items.map((c, i) => (
-                    <div className="contact-row" key={i}>
-                      <div className="contact-icon"><Icon name={c.icon as IconName} size={18} /></div>
-                      <div>
-                        <div className="contact-label">{c.label}</div>
-                        <div className="contact-val">{c.val}</div>
-                      </div>
+        <section id="contacts" className="content-section contacts-section">
+          <div className="section-inner">
+            <div className="section-label reveal">{Con.sectionLabel}</div>
+            <h2 className="section-title reveal reveal-delay-1">{Con.title}</h2>
+
+            <div className="contacts-grid-new">
+
+              {/* Карточки контактов */}
+              <div className="contacts-cards">
+                <a href="tel:89107600321" className="contact-card contact-card--phone">
+                  <div className="contact-card-icon">
+                    <Icon name="Phone" size={22} />
+                  </div>
+                  <div className="contact-card-body">
+                    <div className="contact-card-label">{lang === "ru" ? "Позвонить" : "Call us"}</div>
+                    <div className="contact-card-val">8 910 760 03 21</div>
+                  </div>
+                  <Icon name="ArrowUpRight" size={18} className="contact-card-arrow" />
+                </a>
+
+                <div className="contact-card">
+                  <div className="contact-card-icon">
+                    <Icon name="MapPin" size={22} />
+                  </div>
+                  <div className="contact-card-body">
+                    <div className="contact-card-label">{lang === "ru" ? "Адрес" : "Address"}</div>
+                    <div className="contact-card-val">
+                      {lang === "ru"
+                        ? "Смоленская обл., г. Вязьма,\nтрасса М1, д. Бородино"
+                        : "Smolensk Oblast, Vyazma,\nM1 highway, Borodino village"}
                     </div>
-                  ))}
+                  </div>
+                </div>
+
+                <div className="contact-card">
+                  <div className="contact-card-icon">
+                    <Icon name="Calendar" size={22} />
+                  </div>
+                  <div className="contact-card-body">
+                    <div className="contact-card-label">{lang === "ru" ? "Срок реализации" : "Timeline"}</div>
+                    <div className="contact-card-val">{lang === "ru" ? "1–2 года" : "1–2 years"}</div>
+                  </div>
+                </div>
+
+                <div className="contact-card">
+                  <div className="contact-card-icon">
+                    <Icon name="Building2" size={22} />
+                  </div>
+                  <div className="contact-card-body">
+                    <div className="contact-card-label">{lang === "ru" ? "Объект" : "Object"}</div>
+                    <div className="contact-card-val">
+                      {lang === "ru" ? "Индустриальный парк «Бородино»" : "Borodino Industrial Park"}
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA-блок */}
+                <div className="contact-cta-block">
+                  <div className="contact-cta-text">
+                    {lang === "ru"
+                      ? "Готовы обсудить условия участия и ответить на ваши вопросы"
+                      : "Ready to discuss participation terms and answer your questions"}
+                  </div>
+                  <a href="tel:89107600321" className="btn-primary contact-cta-btn">
+                    <Icon name="Phone" size={16} />
+                    {lang === "ru" ? "Позвонить сейчас" : "Call now"}
+                  </a>
                 </div>
               </div>
-            </div>
-          </section>
 
-          <footer className="footer">
-            <div className="footer-inner">
-              <div className="footer-logo">
-                <span className="logo-mark small">ИП</span>
-                <span>{Foot.name}</span>
+              {/* Яндекс карта */}
+              <div className="contacts-map-wrap">
+                <iframe
+                  title="Бородино на карте"
+                  src="https://yandex.ru/map-widget/v1/?ll=34.3&ll=55.2316,34.3093&z=12&pt=34.3093,55.2316,pm2rdl"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  style={{ border: 0, borderRadius: 20, minHeight: 320 }}
+                  allowFullScreen
+                />
               </div>
-              <div className="footer-note">{Foot.note}</div>
+
             </div>
-          </footer>
-        </>
+          </div>
+
+          {/* Footer внутри секции */}
+          <div className="contacts-footer">
+            <div className="section-inner">
+              <div className="contacts-footer-inner">
+                <span style={{ fontFamily: "Georgia, serif", fontWeight: 700, letterSpacing: "0.08em", color: "var(--c-blue)", fontSize: 15 }}>БОРОДИНО</span>
+                <span className="contacts-footer-note">{Foot.note}</span>
+                <span className="contacts-footer-copy">© 2026</span>
+              </div>
+            </div>
+          </div>
+        </section>
       )}
     </>
   );

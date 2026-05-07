@@ -106,7 +106,7 @@ export default function Index() {
           {/* Slide 2 — Solution */}
           <div className={`pres-slide pres-slide--scrollable ${current === 2 ? "pres-slide--active" : ""}`} data-dir={direction}>
             <div className="pres-slide-inner">
-              <section id="solution" className="content-section blue-section">
+              <section id="solution" className="content-section">
                 <ProblemSolution scrollTo={scrollTo} lang={lang} slideOnly="solution" />
               </section>
             </div>
