@@ -35,11 +35,10 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
               </div>
             ))}
           </div>
-          <div className="problem-danger problem-danger--highlight">
-            <div className="problem-danger-icon">⚠️</div>
-            <div>
-              <strong>И самое опасное:</strong> в этот момент ваш клиент покупает продукт конкурента.
-            </div>
+          <div className="problem-danger-headline">
+            <span className="problem-danger-prefix">И самое опасное:</span>
+            <br />
+            в этот момент ваш клиент покупает продукт конкурента.
           </div>
 
 
