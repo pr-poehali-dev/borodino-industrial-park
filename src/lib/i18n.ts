@@ -144,6 +144,15 @@ export const t = {
         { label: "Срок реализации", val: "1–2 года", icon: "Clock" },
         { label: "Площадь парка", val: "7 Га", icon: "Map" },
       ],
+      infraLabel: "Что входит в парк",
+      infraItems: [
+        { val: "21 000 м²", label: "Производство и склады", icon: "Warehouse" },
+        { val: "60 мест", label: "Офисное здание", icon: "Building2" },
+        { val: "на территории", label: "Комбинат питания", icon: "UtensilsCrossed" },
+        { val: "на территории", label: "Спортивный комплекс", icon: "Dumbbell" },
+        { val: "7 Га", label: "Благоустройство", icon: "Trees" },
+        { val: "готовая инфра", label: "Инженерные сети", icon: "Zap" },
+      ],
     },
     contacts: {
       sectionLabel: "Контакты",
@@ -303,6 +312,15 @@ export const t = {
         { label: "Line capacity", val: "60K/h", icon: "Zap" },
         { label: "Timeline", val: "1–2 years", icon: "Clock" },
         { label: "Park area", val: "7 Ha", icon: "Map" },
+      ],
+      infraLabel: "What's included",
+      infraItems: [
+        { val: "21,000 m²", label: "Production & warehouses", icon: "Warehouse" },
+        { val: "60 seats", label: "Office building", icon: "Building2" },
+        { val: "on-site", label: "Canteen", icon: "UtensilsCrossed" },
+        { val: "on-site", label: "Sports complex", icon: "Dumbbell" },
+        { val: "7 Ha", label: "Landscaping", icon: "Trees" },
+        { val: "ready infra", label: "Engineering networks", icon: "Zap" },
       ],
     },
     contacts: {

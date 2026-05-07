@@ -56,18 +56,9 @@ export default function InvestmentContacts({ lang, slideOnly }: InvestmentContac
 
             {/* ── Инфраструктура парка ── */}
             <div className="invest-infra-block">
-              <div className="invest-infra-label">
-                {lang === "ru" ? "Что входит в парк" : "What's included"}
-              </div>
+              <div className="invest-infra-label">{Inv.infraLabel}</div>
               <div className="invest-infra-grid">
-                {[
-                  { val: "21 000 м²", label: lang === "ru" ? "Производство и склады" : "Production & warehouses", icon: "Warehouse" },
-                  { val: "60 мест", label: lang === "ru" ? "Офисное здание" : "Office building", icon: "Building2" },
-                  { val: lang === "ru" ? "на территории" : "on-site", label: lang === "ru" ? "Комбинат питания" : "Canteen", icon: "UtensilsCrossed" },
-                  { val: lang === "ru" ? "на территории" : "on-site", label: lang === "ru" ? "Спортивный комплекс" : "Sports complex", icon: "Dumbbell" },
-                  { val: "7 Га", label: lang === "ru" ? "Благоустройство" : "Landscaping", icon: "Trees" },
-                  { val: lang === "ru" ? "готовая инфра" : "ready infra", label: lang === "ru" ? "Инженерные сети" : "Engineering networks", icon: "Zap" },
-                ].map((item, i) => (
+                {Inv.infraItems.map((item, i) => (
                   <div className="invest-infra-card" key={i}>
                     <div className="invest-infra-icon">
                       <Icon name={item.icon as IconName} size={18} />
