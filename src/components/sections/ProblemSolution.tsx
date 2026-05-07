@@ -43,19 +43,7 @@ export default function ProblemSolution({ scrollTo, lang, slideOnly }: ProblemSo
             {P.dangerText}
           </div>
 
-          <div className="ambitions-block">
-            <div className="ambitions-label">{P.ambitionsLabel}</div>
-            <div className="ambitions-grid">
-              {P.ambitions.map((a, i) => (
-                <div className="ambition-card" key={i}>
-                  <div className="ambition-num">{a.num}</div>
-                  <div className="ambition-emoji">{a.emoji}</div>
-                  <div className="ambition-title">{a.title}</div>
-                  <div className="ambition-desc">{a.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+
         </div>
       )}
 

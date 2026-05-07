@@ -139,16 +139,6 @@ export default function ProjectSection({ lang }: ProjectSectionProps) {
           </div>
         </div>
 
-        <div className="infra-grid" style={{ marginTop: "3rem" }}>
-          {T.infraItems.map((item, i) => (
-            <div className="infra-card" key={i}>
-              <div className="infra-icon"><Icon name={item.icon as IconName} size={22} /></div>
-              <div className="infra-value">{item.value}</div>
-              <div className="infra-title">{item.title}</div>
-            </div>
-          ))}
-        </div>
-
       </div>
     </section>
   );
