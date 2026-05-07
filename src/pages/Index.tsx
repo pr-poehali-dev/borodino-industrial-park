@@ -55,7 +55,7 @@ export default function Index() {
                 onClick={() => scrollTo(item.id)}>{item.label}</button>
             ))}
           </div>
-          <button className="navbar-cta" onClick={() => scrollTo("contacts")}>Связаться</button>
+          <a className="navbar-cta" href="tel:89107600321" style={{ textDecoration: "none" }}>8 910 760 03 21</a>
           <button className="burger" onClick={() => setMenuOpen(!menuOpen)}>
             <Icon name={menuOpen ? "X" : "Menu"} size={22} />
           </button>

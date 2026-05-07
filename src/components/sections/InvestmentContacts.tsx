@@ -56,8 +56,7 @@ export default function InvestmentContacts() {
               {[
                 { icon: "Building2", label: "Объект", val: "Индустриальный парк «Бородино»" },
                 { icon: "MapPin", label: "Адрес", val: "Смоленская обл., г. Вязьма, д. Бородино, трасса М1" },
-                { icon: "Phone", label: "Телефон", val: "+7 (___) ___-__-__" },
-                { icon: "Mail", label: "Email", val: "info@borodino-park.ru" },
+                { icon: "Phone", label: "Телефон", val: "8 910 760 03 21" },
                 { icon: "Calendar", label: "Период реализации", val: "1–2 года" },
               ].map((c, i) => (
                 <div className="contact-row" key={i}>
@@ -69,17 +68,7 @@ export default function InvestmentContacts() {
                 </div>
               ))}
             </div>
-            <div className="contact-form">
-              <div className="form-title">Запросить презентацию</div>
-              <input className="form-input" placeholder="Ваше имя" />
-              <input className="form-input" placeholder="Компания" />
-              <input className="form-input" placeholder="Email или телефон" />
-              <textarea className="form-textarea" placeholder="Вопрос или комментарий" rows={3} />
-              <button className="btn-primary full">
-                Отправить запрос <Icon name="Send" size={16} />
-              </button>
-              <div className="form-note">Свяжемся в течение одного рабочего дня</div>
-            </div>
+
           </div>
         </div>
       </section>
