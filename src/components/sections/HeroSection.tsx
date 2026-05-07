@@ -69,7 +69,7 @@ export default function HeroSection({ scrollTo }: HeroSectionProps) {
             <span className="hero-headline-accent">вы закрываете спрос<br />и забираете рынок.</span>
           </h1>
           <p className="hero-tagline">
-            Строительство индустриальной площадки 7 Га с готовой инфраструктурой для размещения производств напитков и складских мощностей · трасса М1
+            Производственный кластер безалкогольных напитков в алюминиевой банке с единым центром отгрузки для федеральных и региональных сетей · трасса М1
           </p>
           <div className="hero-actions">
             <button className="btn-primary" onClick={() => scrollTo("investment")}>
