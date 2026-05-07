@@ -41,6 +41,26 @@ export default function ProblemSolution({ scrollTo }: ProblemSolutionProps) {
             в этот момент ваш клиент покупает продукт конкурента.
           </div>
 
+          {/* Амбиции рынка */}
+          <div className="ambitions-block">
+            <div className="ambitions-label">Амбиции рынка</div>
+            <div className="ambitions-grid">
+              {[
+                { num: "01", emoji: "🏆", title: "Стать новым локальным лидером", desc: "После ослабления международных брендов открылось окно возможностей." },
+                { num: "02", emoji: "🎵", title: "Построить культовый бренд", desc: "Не просто продавать напиток — создать lifestyle. Музыка, gaming, спорт, digital community." },
+                { num: "03", emoji: "🛒", title: "Масштабирование через сети", desc: "Зайти в X5, Магнит, ВкусВилл, АЗС и маркетплейсы — значит стать настоящим брендом." },
+                { num: "04", emoji: "⚡", title: "Захват тренда functional drinks", desc: "No sugar, витамины, адаптогены, wellness. Быть не газировкой, а функциональным продуктом." },
+                { num: "05", emoji: "🌍", title: "Создать экспортный бренд", desc: "Амбиция выйти на рынки СНГ, Ближнего Востока и Азии." },
+              ].map((a, i) => (
+                <div className="ambition-card" key={i}>
+                  <div className="ambition-num">{a.num}</div>
+                  <div className="ambition-emoji">{a.emoji}</div>
+                  <div className="ambition-title">{a.title}</div>
+                  <div className="ambition-desc">{a.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
 
         </div>
       </section>

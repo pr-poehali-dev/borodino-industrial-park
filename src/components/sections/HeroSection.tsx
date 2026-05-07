@@ -90,10 +90,10 @@ export default function HeroSection({ scrollTo }: HeroSectionProps) {
       {/* ── STATS ───────────────────────────────── */}
       <section className="stats-section" ref={statsRef}>
         <div className="stats-grid">
-          <StatCard value={7}   suffix=" Га"      label="Площадь площадки"        delay={0}   start={statsInView} />
-          <StatCard value={3}   suffix=" млрд ₽"  label="Объём инвестиций"         delay={150} start={statsInView} />
-          <StatCard value={250} suffix="+"         label="Рабочих мест"             delay={300} start={statsInView} />
-          <StatCard value={60}  suffix=" тыс/ч"   label="Банок — мощность линии"   delay={450} start={statsInView} />
+          <StatCard value={7}   suffix=" Га"       label="Площадь площадки"         delay={0}   start={statsInView} />
+          <StatCard value={1}   suffix=",5 млрд ₽" label="Стоимость проекта"        delay={150} start={statsInView} />
+          <StatCard value={35}  suffix=" млн"      label="Банок в месяц — выпуск"   delay={300} start={statsInView} />
+          <StatCard value={60}  suffix=" тыс/ч"    label="Банок — мощность линии"   delay={450} start={statsInView} />
         </div>
       </section>
     </>
