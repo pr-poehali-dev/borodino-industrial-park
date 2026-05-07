@@ -90,11 +90,9 @@ export default function HeroSection({ scrollTo, lang }: HeroSectionProps) {
         <div className="scroll-indicator" onClick={() => scrollTo("problem")}>
           <Icon name="ChevronDown" size={24} />
         </div>
-      </section>
 
-      {/* ── STATS ───────────────────────────────── */}
-      <section className="stats-section" ref={statsRef}>
-        <div className="stats-grid">
+        {/* Статистика встроена в hero-слайд */}
+        <div className="hero-stats-inline" ref={statsRef}>
           {T.stats.map((s, i) => (
             <StatCard key={i} value={STAT_VALUES[i]} suffix={s.suffix} label={s.label} delay={i * 150} start={statsInView} />
           ))}

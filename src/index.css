@@ -76,6 +76,171 @@
   background: var(--c-bg);
 }
 
+/* ── PRESENTATION MODE ──────────────────────────── */
+.pres-root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.pres-viewport {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.pres-track {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.85s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+.pres-slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.pres-slide--scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-border) transparent;
+}
+
+.pres-slide--scrollable::-webkit-scrollbar {
+  width: 4px;
+}
+.pres-slide--scrollable::-webkit-scrollbar-thumb {
+  background: var(--c-border);
+  border-radius: 4px;
+}
+
+.pres-slide-inner {
+  min-height: 100%;
+  padding-top: 52px;
+}
+
+/* Анимация появления контента слайда */
+.pres-slide--active > *,
+.pres-slide--active .pres-slide-inner > * {
+  animation: slideContentIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: 0.3s;
+}
+
+@keyframes slideContentIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── DOTS ───────────────────────────────────────── */
+.pres-dots {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 200;
+}
+
+.pres-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(45, 107, 196, 0.25);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.pres-dot--active {
+  background: var(--c-blue);
+  transform: scale(1.5);
+}
+
+.pres-dot:hover:not(.pres-dot--active) {
+  background: rgba(45, 107, 196, 0.5);
+  transform: scale(1.2);
+}
+
+/* ── ARROWS ─────────────────────────────────────── */
+.pres-arrows {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--c-border2);
+  border-radius: 40px;
+  padding: 6px 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.pres-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-text2);
+  transition: all 0.2s;
+}
+
+.pres-arrow:hover:not(:disabled) {
+  background: var(--c-bg3);
+  color: var(--c-blue);
+}
+
+.pres-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.pres-slide-counter {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-text3);
+  letter-spacing: 0.05em;
+  min-width: 36px;
+  text-align: center;
+}
+
+/* Скрываем точки и стрелки на мобильном, там и так свайп */
+@media (max-width: 600px) {
+  .pres-dots {
+    right: 10px;
+  }
+  .pres-dot {
+    width: 6px;
+    height: 6px;
+  }
+}
+
 /* ── NAVBAR ────────────────────────────────────── */
 .navbar {
   position: fixed;
@@ -210,14 +375,44 @@
 /* ── HERO ───────────────────────────────────────── */
 .hero-section {
   position: relative;
-  min-height: 100svh;
+  height: 100vh;
+  min-height: unset;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   padding-top: 52px;
   background: linear-gradient(160deg, #edf4ff 0%, #ffffff 50%, #f0f6ff 100%);
   text-align: center;
+}
+
+/* Статистика внутри hero-слайда */
+.hero-stats-inline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: #ffffff;
+  border-top: 1px solid var(--c-border2);
+  z-index: 2;
+}
+.hero-stats-inline .stat-card {
+  padding: 1.25rem 1rem;
+}
+@media (max-width: 768px) {
+  .hero-stats-inline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero-stats-inline .stat-card:nth-child(2) {
+    border-right: none;
+  }
+  .hero-stats-inline .stat-card:nth-child(1),
+  .hero-stats-inline .stat-card:nth-child(2) {
+    border-bottom: 1px solid var(--c-border2);
+  }
 }
 .hero-section::before {
   content: "";
@@ -604,6 +799,17 @@
 /* ── SECTIONS ───────────────────────────────────── */
 .content-section {
   padding: 9rem 2rem;
+}
+
+/* В презентационном режиме контент занимает всю доступную высоту */
+.pres-slide-inner .content-section {
+  min-height: 100%;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
+
+.pres-slide-inner .content-section:first-child {
+  padding-top: 7rem;
 }
 
 /* Reveal on scroll */

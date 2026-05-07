@@ -5,17 +5,21 @@ type IconName = string;
 interface ProblemSolutionProps {
   scrollTo: (id: string) => void;
   lang: Lang;
+  slideOnly?: "problem" | "solution";
 }
 
-export default function ProblemSolution({ scrollTo, lang }: ProblemSolutionProps) {
+export default function ProblemSolution({ scrollTo, lang, slideOnly }: ProblemSolutionProps) {
   const T = t[lang];
   const P = T.problem;
   const S = T.solution;
 
+  const showProblem = !slideOnly || slideOnly === "problem";
+  const showSolution = !slideOnly || slideOnly === "solution";
+
   return (
     <>
       {/* ── ПРОБЛЕМА ─────────────────────────── */}
-      <section id="problem" className="content-section">
+      {showProblem && (
         <div className="section-inner">
           <div className="section-label reveal">{P.sectionLabel}</div>
           <h2 className="section-title reveal reveal-delay-1">
@@ -53,10 +57,10 @@ export default function ProblemSolution({ scrollTo, lang }: ProblemSolutionProps
             </div>
           </div>
         </div>
-      </section>
+      )}
 
       {/* ── РЕШЕНИЕ ──────────────────────────── */}
-      <section id="solution" className="content-section blue-section">
+      {showSolution && (
         <div className="section-inner">
           <div className="section-label reveal">{S.sectionLabel}</div>
           <h2 className="section-title reveal reveal-delay-1">
@@ -94,7 +98,7 @@ export default function ProblemSolution({ scrollTo, lang }: ProblemSolutionProps
             ))}
           </div>
         </div>
-      </section>
+      )}
     </>
   );
 }
