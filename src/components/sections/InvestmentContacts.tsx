@@ -20,7 +20,7 @@ export default function InvestmentContacts({ lang, slideOnly }: InvestmentContac
     <>
       {/* ── ИНВЕСТИЦИИ ───────────────────────────── */}
       {showInvestment && (
-        <section id="investment" className="content-section">
+        <section id="investment" className="content-section" style={{ background: "#fff" }}>
           <div className="section-inner">
             <div className="section-label reveal">{Inv.sectionLabel}</div>
             <h2 className="section-title reveal reveal-delay-1">
@@ -75,7 +75,7 @@ export default function InvestmentContacts({ lang, slideOnly }: InvestmentContac
 
       {/* ── КОНТАКТЫ ─────────────────────────────── */}
       {showContacts && (
-        <section id="contacts" className="content-section contacts-section">
+        <section id="contacts" className="content-section contacts-section" style={{ background: "var(--ikea-blue)" }}>
           <div className="section-inner">
             <div className="section-label reveal">{Con.sectionLabel}</div>
             <h2 className="section-title reveal reveal-delay-1">{Con.title}</h2>
