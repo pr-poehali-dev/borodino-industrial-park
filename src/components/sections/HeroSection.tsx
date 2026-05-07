@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "@/components/ui/icon";
+import { t, Lang } from "@/lib/i18n";
 
 const HERO_IMAGE =
   "https://cdn.poehali.dev/projects/49f7a74d-a29e-4df6-a9ab-7c61c90787d1/bucket/ef9bd226-9fab-425b-a231-f03b59b2c000.png";
@@ -34,6 +35,8 @@ function useInView(threshold = 0.2) {
   return { ref, inView };
 }
 
+const STAT_VALUES = [7, 1, 35, 60];
+
 function StatCard({ value, suffix, label, delay = 0, start }: {
   value: number; suffix: string; label: string; delay?: number; start: boolean;
 }) {
@@ -48,10 +51,12 @@ function StatCard({ value, suffix, label, delay = 0, start }: {
 
 interface HeroSectionProps {
   scrollTo: (id: string) => void;
+  lang: Lang;
 }
 
-export default function HeroSection({ scrollTo }: HeroSectionProps) {
+export default function HeroSection({ scrollTo, lang }: HeroSectionProps) {
   const { ref: statsRef, inView: statsInView } = useInView(0.3);
+  const T = t[lang];
 
   return (
     <>
@@ -62,22 +67,22 @@ export default function HeroSection({ scrollTo }: HeroSectionProps) {
         <div className="hero-glow" />
 
         <div className="hero-content">
-          <div className="hero-eyebrow">Индустриальный парк «Бородино» · г. Вязьма</div>
+          <div className="hero-eyebrow">{T.hero.eyebrow}</div>
           <h1 className="hero-headline">
-            Пока другие ждут свободные окна<br />
-            на контрактных площадках —<br />
-            <span className="hero-headline-accent">вы закрываете спрос<br />и забираете рынок.</span>
+            {T.hero.headline1}<br />
+            {T.hero.headline2}<br />
+            <span className="hero-headline-accent">{T.hero.headlineAccent.split("\n").map((line, i, arr) => (
+              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+            ))}</span>
           </h1>
-          <p className="hero-tagline">
-            Производственный кластер безалкогольных напитков в алюминиевой банке с единым центром отгрузки для федеральных и региональных сетей · трасса М1
-          </p>
+          <p className="hero-tagline">{T.hero.tagline}</p>
           <div className="hero-actions">
             <button className="btn-primary" onClick={() => scrollTo("investment")}>
-              Условия инвестирования
+              {T.hero.btnInvest}
               <Icon name="ArrowRight" size={16} />
             </button>
             <button className="btn-outline" onClick={() => scrollTo("problem")}>
-              Подробнее
+              {T.hero.btnMore}
             </button>
           </div>
         </div>
@@ -90,10 +95,9 @@ export default function HeroSection({ scrollTo }: HeroSectionProps) {
       {/* ── STATS ───────────────────────────────── */}
       <section className="stats-section" ref={statsRef}>
         <div className="stats-grid">
-          <StatCard value={7}   suffix=" Га"       label="Площадь площадки"         delay={0}   start={statsInView} />
-          <StatCard value={1}   suffix=",5 млрд ₽" label="Стоимость проекта"        delay={150} start={statsInView} />
-          <StatCard value={35}  suffix=" млн"      label="Банок в месяц — выпуск"   delay={300} start={statsInView} />
-          <StatCard value={60}  suffix=" тыс/ч"    label="Банок — мощность линии"   delay={450} start={statsInView} />
+          {T.stats.map((s, i) => (
+            <StatCard key={i} value={STAT_VALUES[i]} suffix={s.suffix} label={s.label} delay={i * 150} start={statsInView} />
+          ))}
         </div>
       </section>
     </>

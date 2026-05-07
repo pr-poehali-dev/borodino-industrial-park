@@ -1,21 +1,25 @@
 import Icon from "@/components/ui/icon";
+import { t, Lang } from "@/lib/i18n";
 type IconName = string;
 
-export default function AdvantagesSection() {
+interface AdvantagesSectionProps {
+  lang: Lang;
+}
+
+export default function AdvantagesSection({ lang }: AdvantagesSectionProps) {
+  const T = t[lang].advantages;
+
   return (
     <section id="advantages" className="content-section">
       <div className="section-inner">
-        <div className="section-label reveal">Преимущества</div>
-        <h2 className="section-title reveal reveal-delay-1">Конкурентные<br />преимущества инвестиции в Индустриальный парк «Бородино».</h2>
+        <div className="section-label reveal">{T.sectionLabel}</div>
+        <h2 className="section-title reveal reveal-delay-1">
+          {T.title.split("\n").map((line, i, arr) => (
+            <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+          ))}
+        </h2>
         <div className="adv-grid">
-          {[
-            { icon: "Zap", title: "Прозрачное и стабильное ценообразование за счёт полного контроля над производством", desc: "" },
-            { icon: "BarChart2", title: "Гибкое управление выпуском без зависимости от контрактных площадок", desc: "" },
-            { icon: "TrendingDown", title: "Снижение затрат за счёт вертикальной интеграции и собственной логистики", desc: "" },
-            { icon: "Truck", title: "Поставки в федеральные сети из одной точки — быстро и без хаоса", desc: "" },
-            { icon: "DollarSign", title: "Дополнительный доход от свободных мощностей и ответственного хранения", desc: "" },
-            { icon: "MapPin", title: "Стратегическое расположение", desc: "Трасса М1, г. Вязьма — узловая точка между Москвой и западными регионами" },
-          ].map((a, i) => (
+          {T.items.map((a, i) => (
             <div className="adv-card" key={i}>
               <div className="adv-number">0{i + 1}</div>
               <div className="adv-icon-wrap"><Icon name={a.icon as IconName} size={26} /></div>
