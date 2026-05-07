@@ -2563,6 +2563,82 @@
   }
 }
 
+/* ── INVEST INFRA BLOCK ─────────────────────────── */
+.invest-infra-block {
+  margin-top: 2.5rem;
+}
+
+.invest-infra-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-blue);
+  margin-bottom: 1.25rem;
+}
+
+.invest-infra-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.invest-infra-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border2);
+  border-radius: 16px;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.invest-infra-card:hover {
+  border-color: var(--c-border);
+  background: var(--c-bg3);
+}
+
+.invest-infra-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--c-accent);
+  color: var(--c-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.invest-infra-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.2;
+}
+
+.invest-infra-desc {
+  font-size: 11px;
+  color: var(--c-text3);
+  line-height: 1.4;
+}
+
+@media (max-width: 1024px) {
+  .invest-infra-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .invest-infra-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* ── HIDE LEGACY ────────────────────────────────── */
 .hero-offer,
 .hero-asset-block,
