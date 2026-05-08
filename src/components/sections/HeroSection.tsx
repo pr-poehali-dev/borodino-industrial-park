@@ -60,20 +60,28 @@ export default function HeroSection({ scrollTo, lang }: HeroSectionProps) {
 
   return (
     <>
-      {/* ── HERO ──────────────────────────────────── */}
       <section id="overview" className="hero-section">
         <div className="hero-bg" style={{ backgroundImage: `url(${HERO_IMAGE})` }} />
         <div className="hero-overlay" />
         <div className="hero-glow" />
+
+        {/* Floating orbs */}
+        <div className="hero-orbs">
+          <div className="hero-orb hero-orb-1" />
+          <div className="hero-orb hero-orb-2" />
+          <div className="hero-orb hero-orb-3" />
+        </div>
 
         <div className="hero-content">
           <div className="hero-eyebrow">{T.hero.eyebrow}</div>
           <h1 className="hero-headline">
             {T.hero.headline1}<br />
             {T.hero.headline2}<br />
-            <span className="hero-headline-accent">{T.hero.headlineAccent.split("\n").map((line, i, arr) => (
-              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-            ))}</span>
+            <span className="hero-headline-accent">
+              {T.hero.headlineAccent.split("\n").map((line, i, arr) => (
+                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+              ))}
+            </span>
           </h1>
           <p className="hero-tagline">{T.hero.tagline}</p>
           <div className="hero-actions">
@@ -90,10 +98,8 @@ export default function HeroSection({ scrollTo, lang }: HeroSectionProps) {
         <div className="scroll-indicator" onClick={() => scrollTo("problem")}>
           <Icon name="ChevronDown" size={24} />
         </div>
-
       </section>
 
-      {/* ── STATS ───────────────────────────────── */}
       <section className="stats-section" ref={statsRef}>
         <div className="stats-grid">
           {T.stats.map((s, i) => (

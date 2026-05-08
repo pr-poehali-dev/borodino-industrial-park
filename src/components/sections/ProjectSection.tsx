@@ -12,14 +12,17 @@ export default function ProjectSection({ lang }: ProjectSectionProps) {
   return (
     <section id="project" className="content-section">
       <div className="section-inner">
-        <div className="section-label reveal">{T.sectionLabel}</div>
-        <h2 className="section-title reveal reveal-delay-1">
-          {T.title.split("\n").map((line, i, arr) => (
-            <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-          ))}
-        </h2>
+        <div style={{ maxWidth: 640, marginBottom: "3.5rem" }}>
+          <div className="section-label reveal">{T.sectionLabel}</div>
+          <h2 className="section-title reveal reveal-delay-1">
+            {T.title.split("\n").map((line, i, arr) => (
+              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+            ))}
+          </h2>
+        </div>
 
-        <div className="project-sketch">
+        {/* Генплан */}
+        <div className="project-sketch reveal reveal-delay-2">
           <div className="project-sketch-label">
             <Icon name="FileText" size={14} />
             {T.sketchLabel}
@@ -32,7 +35,8 @@ export default function ProjectSection({ lang }: ProjectSectionProps) {
           <div className="project-sketch-caption">{T.sketchCaption}</div>
         </div>
 
-        <div className="building-gallery">
+        {/* Галерея */}
+        <div className="building-gallery reveal reveal-delay-2">
           <div className="building-gallery-label">
             <Icon name="Building2" size={14} />
             {T.buildingLabel}
@@ -57,27 +61,29 @@ export default function ProjectSection({ lang }: ProjectSectionProps) {
           </div>
         </div>
 
-        <div className="project-geo">
-          <div className="project-geo-map">
-            <div className="map-pulse" />
-            <Icon name="MapPin" size={36} className="map-icon" />
-            <div className="map-label">{T.mapLabel}</div>
-            <div className="map-sublabel">{T.mapSublabel}</div>
+        {/* Гео-карточки */}
+        <div style={{ marginTop: "3.5rem" }}>
+          <div style={{ marginBottom: "0.75rem" }}>
+            <div style={{ fontWeight: 700, fontSize: "1.15rem", color: "var(--c-text)", letterSpacing: "-0.02em" }}>{T.mapLabel}</div>
+            <div style={{ color: "var(--c-text2)", fontSize: 13 }}>{T.mapSublabel}</div>
           </div>
-          <div className="project-geo-info">
+          <div className="geo-grid">
             {T.geoItems.map((item, i) => (
-              <div className="geo-item" key={i}>
-                <div className="geo-icon-wrap"><Icon name={item.icon as IconName} size={18} /></div>
+              <div className="geo-card reveal" key={i} style={{ transitionDelay: `${0.08 * i}s` }}>
+                <div className="geo-icon">
+                  <Icon name={item.icon as IconName} size={20} />
+                </div>
                 <div>
-                  <div className="geo-item-title">{item.title}</div>
-                  <div className="geo-item-text">{item.text}</div>
+                  <div className="geo-title">{item.title}</div>
+                  <div className="geo-text">{item.text}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="flagship-card" style={{ marginTop: "3rem" }}>
+        {/* Flagship */}
+        <div className="flagship-card reveal" style={{ marginTop: "3.5rem" }}>
           <div className="flagship-badge">{T.flagshipBadge}</div>
           <div className="flagship-content">
             <div className="flagship-emoji">🥤</div>
@@ -91,7 +97,8 @@ export default function ProjectSection({ lang }: ProjectSectionProps) {
           </div>
         </div>
 
-        <div className="turnkey-block">
+        {/* Turnkey */}
+        <div className="turnkey-block reveal reveal-delay-1" style={{ marginTop: "2rem" }}>
           <div className="turnkey-label">{T.turnkeyLabel}</div>
           <h3 className="turnkey-title">{T.turnkeyTitle}</h3>
           <p className="turnkey-text">{T.turnkeyText}</p>
@@ -109,24 +116,24 @@ export default function ProjectSection({ lang }: ProjectSectionProps) {
           </div>
         </div>
 
-        <div className="contracts-block">
-          <div className="contracts-label">{T.contractsLabel}</div>
+        {/* Контракты */}
+        <div className="contracts-block reveal reveal-delay-1" style={{ marginTop: "2rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem" }}>
+            <div style={{
+              fontSize: 11, fontWeight: 700, letterSpacing: "0.14em",
+              textTransform: "uppercase", color: "var(--c-gold)", opacity: 0.8
+            }}>{T.contractsLabel}</div>
+          </div>
           <h3 className="contracts-title">{T.contractsTitle}</h3>
           <div className="contracts-grid">
             <div className="contracts-col">
-              <div className="contracts-col-title">
-                <Icon name="FileCheck" size={18} />
-                {T.contractsCol1Title}
-              </div>
+              <div className="contracts-col-title">{T.contractsCol1Title}</div>
               <div className="contracts-col-text">{T.contractsCol1Text}</div>
               <div className="contracts-badge">{T.contractsBadge}</div>
             </div>
             <div className="contracts-divider" />
             <div className="contracts-col">
-              <div className="contracts-col-title">
-                <Icon name="Package" size={18} />
-                {T.contractsCol2Title}
-              </div>
+              <div className="contracts-col-title">{T.contractsCol2Title}</div>
               <div className="contracts-partners">
                 {T.contractsPartners.map((p, i) => (
                   <div className="contracts-partner" key={i}>
@@ -138,7 +145,6 @@ export default function ProjectSection({ lang }: ProjectSectionProps) {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );
