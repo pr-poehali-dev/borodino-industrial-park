@@ -158,7 +158,9 @@ export default function Index() {
         <ProblemSolution scrollTo={scrollTo} lang={lang} slideOnly="solution" />
       </section>
 
+      <div className="section-sep section-sep--light-to-dark" />
       <AdvantagesSection lang={lang} />
+      <div className="section-sep section-sep--dark-to-light" />
 
       <ProjectSection lang={lang} />
 
