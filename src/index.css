@@ -2151,3 +2151,212 @@
 .form-textarea::placeholder {
   color: var(--c-text3);
 }
+
+/* ══════════════════════════════════════════════════
+   PRESENTATION MODE
+══════════════════════════════════════════════════ */
+
+.pres-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--c-bg);
+  overflow: hidden;
+}
+
+/* Вертикальный трек слайдов */
+.pres-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.75s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+/* Один слайд = 100vh */
+.pres-slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Слайд с прокруткой внутри */
+.pres-slide--scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 76, 0.25) transparent;
+}
+.pres-slide--scrollable::-webkit-scrollbar {
+  width: 4px;
+}
+.pres-slide--scrollable::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.2);
+  border-radius: 4px;
+}
+
+/* Внутренний контейнер слайда */
+.pres-slide-inner {
+  min-height: 100%;
+  padding-top: 56px;
+  padding-bottom: 80px; /* место под нижнюю навигацию */
+}
+
+/* Сжимаем отступы секций в презентации */
+.pres-slide .content-section,
+.pres-slide-inner .content-section {
+  padding: 5rem 2rem 4rem;
+}
+
+/* Reveal при активации слайда */
+.pres-slide .reveal,
+.pres-slide-inner .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.pres-slide .reveal.visible,
+.pres-slide-inner .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── КНОПКИ СНИЗУ ─────────────────────────────── */
+.pres-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1.5rem;
+  height: 64px;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pres-bottom-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: var(--c-text2);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  padding: 8px 16px;
+  white-space: nowrap;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.pres-bottom-btn:hover:not(:disabled) {
+  background: rgba(201, 168, 76, 0.12);
+  border-color: rgba(201, 168, 76, 0.3);
+  color: var(--c-gold);
+}
+.pres-bottom-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* Прогресс-обёртка */
+.pres-progress-wrap {
+  flex: 1;
+  position: relative;
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+/* Фоновая полоса */
+.pres-progress-wrap::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 2px;
+}
+
+/* Заполненная полоса */
+.pres-progress-bar {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: linear-gradient(90deg, var(--c-gold3), var(--c-gold));
+  border-radius: 2px;
+  transition: width 0.75s cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 1;
+}
+
+/* Точки-слайды поверх полосы */
+.pres-slide-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.pres-bottom-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+.pres-bottom-dot--active {
+  background: var(--c-gold);
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.5);
+}
+.pres-bottom-dot:hover:not(.pres-bottom-dot--active) {
+  background: rgba(201, 168, 76, 0.5);
+  transform: scale(1.2);
+}
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+  .pres-bottom-nav {
+    padding: 0 0.75rem;
+    gap: 0.75rem;
+  }
+  .pres-bottom-btn span {
+    display: none;
+  }
+  .pres-bottom-btn {
+    padding: 8px 10px;
+  }
+  .pres-slide .content-section,
+  .pres-slide-inner .content-section {
+    padding: 3.5rem 1rem 3rem;
+  }
+}
