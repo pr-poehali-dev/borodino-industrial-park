@@ -75,11 +75,11 @@ export default function Index() {
             ))}
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <div className="navbar-controls">
             {/* Переключатель языка */}
             <div style={{
               display: "flex", background: "rgba(255,255,255,0.06)",
-              borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)"
+              borderRadius: 8, overflow: "hidden", border: "1px solid rgba(0,0,0,0.12)"
             }}>
               <button
                 onClick={() => setLang("ru")}
@@ -106,14 +106,7 @@ export default function Index() {
             {/* Кнопка презентации */}
             <button
               onClick={() => setPresMode(true)}
-              style={{
-                display: "flex", alignItems: "center", gap: 6,
-                background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)",
-                borderRadius: 8, color: "var(--c-gold)", cursor: "pointer",
-                padding: "5px 12px", fontSize: 12, fontWeight: 600,
-                fontFamily: "Inter,sans-serif", transition: "all 0.2s",
-                whiteSpace: "nowrap"
-              }}
+              className="navbar-pres-btn"
               onMouseEnter={e => (e.currentTarget.style.background = "rgba(201,168,76,0.18)")}
               onMouseLeave={e => (e.currentTarget.style.background = "rgba(201,168,76,0.1)")}
             >
