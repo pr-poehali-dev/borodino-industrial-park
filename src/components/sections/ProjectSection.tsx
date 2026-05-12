@@ -118,12 +118,7 @@ export default function ProjectSection({ lang }: ProjectSectionProps) {
 
         {/* Контракты */}
         <div className="contracts-block reveal reveal-delay-1" style={{ marginTop: "2rem" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem" }}>
-            <div style={{
-              fontSize: 11, fontWeight: 700, letterSpacing: "0.14em",
-              textTransform: "uppercase", color: "var(--c-gold)", opacity: 0.8
-            }}>{T.contractsLabel}</div>
-          </div>
+          <div className="section-label" style={{ marginBottom: "0.75rem" }}>{T.contractsLabel}</div>
           <h3 className="contracts-title">{T.contractsTitle}</h3>
           <div className="contracts-grid">
             <div className="contracts-col">

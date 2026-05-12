@@ -1873,10 +1873,11 @@
 }
 .contracts-col-title {
   font-weight: 700;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--c-text);
   letter-spacing: -0.01em;
   margin-bottom: 0.75rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 .contracts-col-text {
   color: var(--c-text2);
