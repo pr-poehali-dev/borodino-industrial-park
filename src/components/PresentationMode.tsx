@@ -19,13 +19,14 @@ const IMG_TOP    = "https://cdn.poehali.dev/projects/49f7a74d-a29e-4df6-a9ab-7c6
 const IMG_SIDE   = "https://cdn.poehali.dev/projects/49f7a74d-a29e-4df6-a9ab-7c61c90787d1/bucket/82506be1-dbc3-4b4c-9ebe-1789497c82fb.png";
 
 /* ── Обёртка слайда ── */
-function Slide({ children, bg }: { children: React.ReactNode; bg?: string }) {
+function Slide({ children, bg, slideRef }: { children: React.ReactNode; bg?: string; slideRef?: React.RefObject<HTMLDivElement> }) {
   return (
-    <div style={{
+    <div ref={slideRef} style={{
       width: "100vw", height: "100vh", flexShrink: 0,
-      position: "relative", overflow: "hidden",
+      position: "relative", overflowY: "auto", overflowX: "hidden",
       background: bg || "var(--c-bg)",
       display: "flex", flexDirection: "column",
+      paddingTop: 56, paddingBottom: 64,
     }}>
       {children}
     </div>
@@ -102,6 +103,9 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
   const lockRef = useRef(false);
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
+  const slideRefs = useRef<React.RefObject<HTMLDivElement>[]>(
+    Array.from({ length: TOTAL }, () => ({ current: null }) as React.RefObject<HTMLDivElement>)
+  );
   const T = t[lang];
   const LABELS = lang === "ru" ? SLIDE_LABELS_RU : SLIDE_LABELS_EN;
 
@@ -110,6 +114,10 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
+
+  useEffect(() => {
+    slideRefs.current[current]?.current?.scrollTo({ top: 0, behavior: "instant" });
+  }, [current]);
 
   const goTo = useCallback((idx: number) => {
     if (lockRef.current || idx < 0 || idx >= TOTAL) return;
@@ -170,7 +178,7 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
   const slides = [
 
     /* 0 — HERO */
-    <Slide key={0}>
+    <Slide key={0} slideRef={slideRefs.current[0]}>
       <div style={{ position:"absolute", inset:0, backgroundImage:`url(${HERO_IMAGE})`, backgroundSize:"cover", backgroundPosition:"center", opacity:0.08 }} />
       <div style={{ position:"absolute", inset:0, background:"radial-gradient(ellipse 80% 60% at 50% 30%, rgba(138,98,32,0.08) 0%, transparent 70%)" }} />
       <div style={{ position:"relative", zIndex:2, flex:1, display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", textAlign:"center", padding: isMobile ? "4rem 1.25rem" : "0 4rem" }}>
@@ -203,8 +211,8 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
     </Slide>,
 
     /* 1 — ПРОБЛЕМА */
-    <Slide key={1}>
-      <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", padding:sp, overflowY: isMobile ? "auto" : "hidden" }}>
+    <Slide key={1} slideRef={slideRefs.current[1]}>
+      <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", padding:sp, }}>
         <SlideLabel>{P.sectionLabel}</SlideLabel>
         <SlideTitle size={titleSize}>
           {P.title1}<br />
@@ -236,8 +244,8 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
     </Slide>,
 
     /* 2 — АМБИЦИИ */
-    <Slide key={2}>
-      <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", padding:sp, overflowY: isMobile ? "auto" : "hidden" }}>
+    <Slide key={2} slideRef={slideRefs.current[2]}>
+      <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", padding:sp, overflow: "visible" }}>
         <SlideLabel>{P.ambitionsLabel}</SlideLabel>
         <SlideTitle size={titleSize}>Кто выигрывает от наличия<br />собственного производства?</SlideTitle>
 
@@ -255,8 +263,8 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
     </Slide>,
 
     /* 3 — РЕШЕНИЕ */
-    <Slide key={3}>
-      <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", padding:sp, overflowY: isMobile ? "auto" : "hidden" }}>
+    <Slide key={3} slideRef={slideRefs.current[3]}>
+      <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", padding:sp, overflow: "visible" }}>
         <SlideLabel>{S.sectionLabel}</SlideLabel>
         <SlideTitle size={titleSize}>
           {S.title1} <GoldText>{S.title2}</GoldText>
@@ -294,8 +302,8 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
     </Slide>,
 
     /* 4 — ПРЕИМУЩЕСТВА */
-    <Slide key={4}>
-      <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", padding:sp, overflowY: isMobile ? "auto" : "hidden" }}>
+    <Slide key={4} slideRef={slideRefs.current[4]}>
+      <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", padding:sp, overflow: "visible" }}>
         <SlideLabel>{A.sectionLabel}</SlideLabel>
         <SlideTitle size={titleSize}>
           {A.title.split("\n")[0]}<br /><GoldText>{A.title.split("\n")[1]}</GoldText>
@@ -321,8 +329,8 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
     </Slide>,
 
     /* 5 — ПРОЕКТ */
-    <Slide key={5}>
-      <div style={{ flex:1, display:"flex", flexDirection:"column", padding:sp, overflowY: isMobile ? "auto" : "hidden" }}>
+    <Slide key={5} slideRef={slideRefs.current[5]}>
+      <div style={{ flex:1, display:"flex", flexDirection:"column", padding:sp, overflow: "visible" }}>
         <SlideLabel>{Pr.sectionLabel}</SlideLabel>
         <SlideTitle size={titleSize}>
           {Pr.title.split("\n")[0]} <GoldText>{Pr.title.split("\n")[1]}</GoldText>
@@ -367,8 +375,8 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
     </Slide>,
 
     /* 6 — ИНВЕСТИЦИИ */
-    <Slide key={6}>
-      <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", padding:sp, overflowY: isMobile ? "auto" : "hidden" }}>
+    <Slide key={6} slideRef={slideRefs.current[6]}>
+      <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", padding:sp, overflow: "visible" }}>
         <SlideLabel>{Inv.sectionLabel}</SlideLabel>
 
         <div style={{ display:"grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "1rem" : "3rem", alignItems:"center" }}>
@@ -435,8 +443,8 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
     </Slide>,
 
     /* 7 — КОНТАКТЫ */
-    <Slide key={7}>
-      <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", padding:sp, overflowY: isMobile ? "auto" : "hidden" }}>
+    <Slide key={7} slideRef={slideRefs.current[7]}>
+      <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", padding:sp, overflow: "visible" }}>
         <SlideLabel>{Con.sectionLabel}</SlideLabel>
         <SlideTitle size={titleSize}>{Con.title}</SlideTitle>
 
