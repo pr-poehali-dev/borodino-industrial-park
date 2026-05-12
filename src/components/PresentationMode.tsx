@@ -71,8 +71,8 @@ function Card({
 }: {
   children: React.ReactNode; gold?: boolean; red?: boolean; green?: boolean; style?: React.CSSProperties;
 }) {
-  const bg  = gold ? "rgba(201,168,76,0.13)" : red ? "rgba(255,59,48,0.08)" : green ? "rgba(48,209,88,0.07)" : "rgba(255,255,255,0.04)";
-  const bdr = gold ? "rgba(201,168,76,0.25)" : red ? "rgba(255,59,48,0.22)" : green ? "rgba(48,209,88,0.22)" : "rgba(255,255,255,0.08)";
+  const bg  = gold ? "rgba(138,98,32,0.07)" : red ? "rgba(217,48,37,0.06)" : green ? "rgba(26,158,58,0.06)" : "rgba(0,0,0,0.03)";
+  const bdr = gold ? "rgba(138,98,32,0.22)" : red ? "rgba(217,48,37,0.2)"  : green ? "rgba(26,158,58,0.2)"  : "rgba(0,0,0,0.09)";
   return (
     <div style={{ background: bg, border: `1px solid ${bdr}`, borderRadius: 18, padding: "1rem 1.25rem", position: "relative", overflow: "hidden", ...style }}>
       {children}
@@ -85,8 +85,8 @@ function IconBox({ name, gold = false, size = 22 }: { name: string; gold?: boole
   return (
     <div style={{
       width: 44, height: 44, borderRadius: 12, flexShrink: 0,
-      background: gold ? "rgba(201,168,76,0.12)" : "rgba(255,255,255,0.06)",
-      border: `1px solid ${gold ? "rgba(201,168,76,0.22)" : "rgba(255,255,255,0.09)"}`,
+      background: gold ? "rgba(138,98,32,0.1)" : "rgba(0,0,0,0.05)",
+      border: `1px solid ${gold ? "rgba(138,98,32,0.22)" : "rgba(0,0,0,0.1)"}`,
       display: "flex", alignItems: "center", justifyContent: "center",
       color: gold ? "var(--c-gold)" : "var(--c-text2)",
     }}>
@@ -161,8 +161,8 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
 
     /* 0 — HERO */
     <Slide key={0}>
-      <div style={{ position:"absolute", inset:0, backgroundImage:`url(${HERO_IMAGE})`, backgroundSize:"cover", backgroundPosition:"center", opacity:0.14 }} />
-      <div style={{ position:"absolute", inset:0, background:"radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,168,76,0.1) 0%, transparent 70%)" }} />
+      <div style={{ position:"absolute", inset:0, backgroundImage:`url(${HERO_IMAGE})`, backgroundSize:"cover", backgroundPosition:"center", opacity:0.08 }} />
+      <div style={{ position:"absolute", inset:0, background:"radial-gradient(ellipse 80% 60% at 50% 30%, rgba(138,98,32,0.08) 0%, transparent 70%)" }} />
       <div style={{ position:"relative", zIndex:2, flex:1, display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", textAlign:"center", padding:"0 4rem" }}>
 
         <div style={{ fontSize:13, fontWeight:700, letterSpacing:"0.22em", textTransform:"uppercase", color:"var(--c-gold)", opacity:0.85, marginBottom:"1.5rem" }}>
@@ -179,9 +179,9 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
           {T.hero.tagline}
         </p>
 
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(4, 1fr)", gap:"1px", background:"rgba(255,255,255,0.07)", borderRadius:20, overflow:"hidden", width:"100%", maxWidth:760 }}>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(4, 1fr)", gap:"1px", background:"rgba(0,0,0,0.07)", borderRadius:20, overflow:"hidden", width:"100%", maxWidth:760 }}>
           {T.stats.map((s, i) => (
-            <div key={i} style={{ background:"rgba(255,255,255,0.03)", padding:"1.25rem 1rem", textAlign:"center" }}>
+            <div key={i} style={{ background:"rgba(255,255,255,0.6)", padding:"1.25rem 1rem", textAlign:"center" }}>
               <div style={{ fontWeight:800, fontSize:"2.2rem", letterSpacing:"-0.03em", background:"linear-gradient(135deg, var(--c-gold3) 0%, var(--c-gold) 50%, var(--c-gold2) 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
                 {[7,1,35,60][i]}<span style={{ fontSize:"1.2rem" }}>{s.suffix}</span>
               </div>
@@ -216,7 +216,7 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
           ))}
         </div>
 
-        <div style={{ display:"flex", alignItems:"flex-start", gap:"0.85rem", padding:"1rem 1.25rem", borderRadius:14, background:"rgba(255,59,48,0.07)", border:"1.5px solid rgba(255,59,48,0.28)" }}>
+        <div style={{ display:"flex", alignItems:"flex-start", gap:"0.85rem", padding:"1rem 1.25rem", borderRadius:14, background:"rgba(217,48,37,0.06)", border:"1.5px solid rgba(217,48,37,0.25)" }}>
           <span style={{ fontSize:"1.3rem" }}>⚠️</span>
           <span style={{ fontSize:"1rem", color:"var(--c-text)", lineHeight:1.5 }}>
             <strong style={{ color:"var(--c-red)" }}>{P.dangerPrefix} </strong>{P.dangerText}
@@ -259,7 +259,7 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
               {S.negativeText.split("\n").map((l, i) => <div key={i}>{l}</div>)}
             </div>
           </Card>
-          <div style={{ display:"flex", alignItems:"center", color:"rgba(255,255,255,0.2)", flexShrink:0, padding:"0 0.25rem" }}>
+          <div style={{ display:"flex", alignItems:"center", color:"rgba(0,0,0,0.2)", flexShrink:0, padding:"0 0.25rem" }}>
             <Icon name="ArrowRight" size={28} />
           </div>
           <Card gold style={{ flex:1 }}>
@@ -409,7 +409,7 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
                 </Card>
               ))}
             </div>
-            <div style={{ display:"flex", alignItems:"center", gap:"0.7rem", padding:"0.85rem 1.1rem", borderRadius:14, background:"rgba(48,209,88,0.07)", border:"1px solid rgba(48,209,88,0.22)" }}>
+            <div style={{ display:"flex", alignItems:"center", gap:"0.7rem", padding:"0.85rem 1.1rem", borderRadius:14, background:"rgba(26,158,58,0.07)", border:"1px solid rgba(26,158,58,0.22)" }}>
               <div style={{ width:9, height:9, borderRadius:"50%", background:"var(--c-green)", flexShrink:0 }} />
               <span style={{ fontSize:"0.95rem", fontWeight:600, color:"var(--c-text)" }}>{Pr.contractsBadge}</span>
               <span style={{ fontSize:"0.85rem", color:"var(--c-text2)", marginLeft:"auto" }}>{Pr.contractsCol1Title}</span>
@@ -482,12 +482,12 @@ export default function PresentationMode({ lang, onExit }: PresentationModeProps
       <nav className="navbar" style={{ zIndex:200 }}>
         <div className="navbar-inner">
           <span style={{ fontFamily:"Georgia,serif", fontSize:18, fontWeight:700, letterSpacing:"0.08em", color:"var(--c-gold)" }}>БОРОДИНО</span>
-          <div style={{ flex:1, textAlign:"center", fontSize:12, fontWeight:600, letterSpacing:"0.18em", textTransform:"uppercase", color:"rgba(245,245,247,0.35)" }}>
+          <div style={{ flex:1, textAlign:"center", fontSize:12, fontWeight:600, letterSpacing:"0.18em", textTransform:"uppercase", color:"rgba(29,29,31,0.35)" }}>
             {LABELS[current]}
           </div>
           <div style={{ display:"flex", alignItems:"center", gap:12 }}>
-            <span style={{ fontSize:12, color:"rgba(245,245,247,0.3)", fontWeight:600 }}>{current+1} / {TOTAL}</span>
-            <button onClick={onExit} style={{ display:"flex", alignItems:"center", gap:5, background:"rgba(255,255,255,0.06)", border:"1px solid rgba(255,255,255,0.1)", borderRadius:8, color:"var(--c-text2)", cursor:"pointer", padding:"5px 12px", fontSize:12, fontWeight:600, fontFamily:"Inter,sans-serif" }}>
+            <span style={{ fontSize:12, color:"rgba(29,29,31,0.3)", fontWeight:600 }}>{current+1} / {TOTAL}</span>
+            <button onClick={onExit} style={{ display:"flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.05)", border:"1px solid rgba(0,0,0,0.1)", borderRadius:8, color:"var(--c-text2)", cursor:"pointer", padding:"5px 12px", fontSize:12, fontWeight:600, fontFamily:"Inter,sans-serif" }}>
               <Icon name="X" size={13} />
               {lang === "ru" ? "Выйти" : "Exit"}
             </button>
